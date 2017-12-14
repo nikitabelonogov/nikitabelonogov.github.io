@@ -1,6 +1,77 @@
-<center>
-  <hr>
-  HELLO.<br>
-  nkitabelonogov.github.io.
-  <hr>
-</center>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="//unpkg.com/vue"></script>
+<script src="//cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<!--<script src="//cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>-->
+
+<style>
+</style>
+<nav id="nav" class="navbar navbar-light bg-light" id="main">
+    <a class="navbar-brand" href="#">
+        <img :src="user.avatar_url" width="30" height="30" class="d-inline-block align-top rounded" alt="">
+        {{ user.name }}
+    </a>
+</nav>
+<script>
+    Vue.component('repo_card', {
+        template: '\
+        <div class="card" style="width: 20rem; height: 10rem; margin: 0.5rem">\
+            <a :href="repo.url" class="card-header card-title card-link"><i class="fa fa-github" aria-hidden="true"></i> {{ repo.name ? repo.name : "" }}</a>\
+            <p class="card-body text-truncate font-weight-light card-text">{{ repo.description ? repo.description : "" }}</p>\
+            <div class="card-footer text-muted">{{ repo.created_at ? repo.created_at : "" }}</div>\
+        </div>\
+        ',
+        props: ['repo']
+    })
+</script>
+
+<div id="repos" class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div v-for="repo in repos">
+            <repo_card :repo="repo"></repo_card>
+        </div>
+    </div>
+</div>
+
+<script>
+    var navVue = new Vue({
+        el: '#nav',
+        data: {
+            user: null
+        },
+        methods: {}
+    });
+    var reposVue = new Vue({
+        el: '#repos',
+        data: {
+            repos: []
+        },
+        methods: {}
+    });
+    axios.get('https://api.github.com/users/nikitabelonogov/repos')
+        .then(response => {
+        reposVue.repos = response.data;
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    axios.get('https://api.github.com/users/nikitabelonogov')
+        .then(response => {
+            navVue.user = response.data;
+        })
+        .catch(e => {
+            console.log(e);
+        });
+</script>
