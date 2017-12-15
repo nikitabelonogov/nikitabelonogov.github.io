@@ -46,37 +46,53 @@
 </div>
 
 <script>
-    GITHUB_name = location.hostname.split('.')[0];
-    var navVue = new Vue({
+    navVue = new Vue({
         el: '#nav',
         data: {
+            user_name: null,
             user: null
         },
-        methods: {},
-        created: function () {
-            axios.get('https://api.github.com/users/'+GITHUB_name+'/repos')
-                .then(response => {
-                    reposVue.repos = response.data;
-                })
-                .catch(e => {
-                    console.log(e);
-                });
+        watch: {
+            user_name: function (new_user_name) {
+                this.get_user(new_user_name);
+            }
+        },
+        methods: {
+            get_user: function (new_user_name = navVue.user_name) {
+                axios.get('https://api.github.com/users/' + new_user_name)
+                    .then(response => {
+                        navVue.user = response.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
         }
     });
-    var reposVue = new Vue({
+    reposVue = new Vue({
         el: '#repos',
         data: {
-            repos: []
+            user_name: null,
+            repos: null
         },
-        methods: {},
-        created: function () {
-            axios.get('https://api.github.com/users/' + GITHUB_name)
-                .then(response => {
-                    navVue.user = response.data;
-                })
-                .catch(e => {
-                    console.log(e);
-                });
+        watch: {
+            user_name: function (new_user_name) {
+                this.get_repos(new_user_name);
+            }
+        },
+        methods: {
+            get_repos: function (new_user_name = reposVue.user_name) {
+                axios.get('https://api.github.com/users/' + new_user_name + '/repos')
+                    .then(response => {
+                        reposVue.repos = response.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
         }
     });
+    GITHUB_name = location.hostname.split('.')[0];
+    navVue.user_name = GITHUB_name;
+    reposVue.user_name = GITHUB_name;
 </script>
