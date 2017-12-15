@@ -46,6 +46,7 @@
 </div>
 
 <script>
+    GITHUB_name = location.hostname.split('.')[0];
     var navVue = new Vue({
         el: '#nav',
         data: {
@@ -53,7 +54,7 @@
         },
         methods: {},
         created: function () {
-            axios.get('https://api.github.com/users/nikitabelonogov/repos')
+            axios.get('https://api.github.com/users/'+GITHUB_name+'/repos')
                 .then(response => {
                     reposVue.repos = response.data;
                 })
@@ -69,7 +70,7 @@
         },
         methods: {},
         created: function () {
-            axios.get('https://api.github.com/users/nikitabelonogov')
+            axios.get('https://api.github.com/users/' + GITHUB_name)
                 .then(response => {
                     navVue.user = response.data;
                 })
