@@ -19,11 +19,12 @@
 <style>
 </style>
 <nav id="nav" class="navbar navbar-light bg-light" id="main">
-    <a class="navbar-brand" href="#">
+    <a v-if="user" class="navbar-brand" href="#">
         <img :src="user.avatar_url" width="30" height="30" class="d-inline-block align-top rounded" alt="">
         {{ user.name }}
     </a>
 </nav>
+
 <script>
     Vue.component('repo_card', {
         template: '\
@@ -36,10 +37,9 @@
         props: ['repo']
     })
 </script>
-
 <div id="repos" class="container-fluid">
     <div class="row d-flex justify-content-center">
-        <div v-for="repo in repos">
+        <div v-if="repos" v-for="repo in repos">
             <repo_card :repo="repo"></repo_card>
         </div>
     </div>
@@ -51,27 +51,31 @@
         data: {
             user: null
         },
-        methods: {}
+        methods: {},
+        created: function () {
+            axios.get('https://api.github.com/users/nikitabelonogov/repos')
+                .then(response => {
+                    reposVue.repos = response.data;
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
     });
     var reposVue = new Vue({
         el: '#repos',
         data: {
             repos: []
         },
-        methods: {}
+        methods: {},
+        created: function () {
+            axios.get('https://api.github.com/users/nikitabelonogov')
+                .then(response => {
+                    navVue.user = response.data;
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
     });
-    axios.get('https://api.github.com/users/nikitabelonogov/repos')
-        .then(response => {
-        reposVue.repos = response.data;
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    axios.get('https://api.github.com/users/nikitabelonogov')
-        .then(response => {
-            navVue.user = response.data;
-        })
-        .catch(e => {
-            console.log(e);
-        });
 </script>
