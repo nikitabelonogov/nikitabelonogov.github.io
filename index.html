@@ -10,89 +10,15 @@
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 
 <script src="//unpkg.com/vue"></script>
-<script src="//cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
-<!--<script src="//cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>-->
 
-<style>
-</style>
-<nav id="nav" class="navbar navbar-light bg-light" id="main">
-    <a v-if="user" class="navbar-brand" href="#">
-        <img :src="user.avatar_url" width="30" height="30" class="d-inline-block align-top rounded" alt="">
-        {{ user.name }}
-    </a>
+<nav id="nav" class="navbar">
+    <span class="nav-item">
+        About
+    </span>
+    <span class="nav-item">
+        Projects
+    </span>
 </nav>
-
-<script>
-    Vue.component('repo_card', {
-        template: '\
-        <div class="card" style="width: 20rem; height: 10rem; margin: 0.5rem">\
-            <a :href="repo.url" class="card-header card-title card-link"><i class="fa fa-github" aria-hidden="true"></i> {{ repo.name ? repo.name : "" }}</a>\
-            <p class="card-body text-truncate font-weight-light card-text">{{ repo.description ? repo.description : "" }}</p>\
-            <div class="card-footer text-muted">{{ repo.created_at ? repo.created_at : "" }}</div>\
-        </div>\
-        ',
-        props: ['repo']
-    })
-</script>
-<div id="repos" class="container-fluid">
-    <div class="row d-flex justify-content-center">
-        <div v-if="repos" v-for="repo in repos">
-            <repo_card :repo="repo"></repo_card>
-        </div>
-    </div>
-</div>
-
-<script>
-    navVue = new Vue({
-        el: '#nav',
-        data: {
-            user_name: null,
-            user: null
-        },
-        watch: {
-            user_name: function (new_user_name) {
-                this.get_user(new_user_name);
-            }
-        },
-        methods: {
-            get_user: function (new_user_name = navVue.user_name) {
-                axios.get('https://api.github.com/users/' + new_user_name)
-                    .then(response => {
-                        navVue.user = response.data;
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
-            }
-        }
-    });
-    reposVue = new Vue({
-        el: '#repos',
-        data: {
-            user_name: null,
-            repos: null
-        },
-        watch: {
-            user_name: function (new_user_name) {
-                this.get_repos(new_user_name);
-            }
-        },
-        methods: {
-            get_repos: function (new_user_name = reposVue.user_name) {
-                axios.get('https://api.github.com/users/' + new_user_name + '/repos')
-                    .then(response => {
-                        reposVue.repos = response.data;
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
-            }
-        }
-    });
-    GITHUB_name = location.hostname.split('.')[0];
-    navVue.user_name = GITHUB_name;
-    reposVue.user_name = GITHUB_name;
-</script>
