@@ -2,8 +2,8 @@
       href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
       integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
       crossorigin="anonymous">
-<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
@@ -235,34 +235,23 @@
 
 <script>
     (function ($) {
-        "use strict"; // Start of use strict
+        "use strict";
 
-        // Smooth scrolling using jQuery easing
-        $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: (target.offset().top - 54)
-                    }, 1000, "easeInOutExpo");
-                    return false;
-                }
+        $('body').scrollspy({target: "#mainNav", offset: 54});
+
+        $("#mainNav a").on('click', function (event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function () {
+                    window.location.hash = hash;
+                });
             }
         });
-
-        // Closes responsive menu when a scroll trigger link is clicked
-        $('.js-scroll-trigger').click(function () {
-            $('.navbar-collapse').collapse('hide');
-        });
-
-        // Activate scrollspy to add active class to navbar items on scroll
-        $('body').scrollspy({
-            target: '#mainNav',
-            offset: 54
-        });
-
-    })(jQuery); // End of use strict
+    })
+    (jQuery);
 
     // Background change | Unity Projects
     $('#card-vega-power').hover(
