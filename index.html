@@ -12,76 +12,145 @@
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 
-<script src="//unpkg.com/vue"></script>
+<style>
+    header {
+        padding: 154px 0 100px;
+    }
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" v-for="(route, hash) in routes">
-            <li class="nav-item" v-if="route.visible || false">
-                <a class="nav-link" :href="route.href">{{ route.name }}</a>
-            </li>
-        </ul>
+    @media (min-width: 992px) {
+        header {
+            padding: 156px 0 100px;
+        }
+    }
+
+    section {
+        padding: 150px 0;
+    }
+</style>
+
+<body id="page-top">
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">meowmeowmeowpewpewpew</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div id="app"></div>
+<!-- Header -->
+<header class="bg-primary text-white">
+    <div class="container text-center">
+        <h1>MOM!IMAGAMEDEV</h1>
+        <p class="lead">And this is my meta site</p>
+    </div>
+</header>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <p>First things I'm looking for in games:</p>
+                <ul>
+                    <li>Interesting visual</li>
+                    <li>Not boring repeatable gameplay</li>
+                    <li>Procedural generation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h3>Some projects I'm currently working on:</h3>
+                <ul>
+                    <li>
+                        <a href="http://vegapower.s3-website-us-east-1.amazonaws.com">Vega Power</a>
+                    </li>
+                    <li>
+                        <a href="http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com">Catch me if you can</a>
+                    </li>
+                    <li>
+                        <a href="http://civilisationx.s3-website-us-east-1.amazonaws.com">CivilisationX</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>You can find me here:</h2>
+                <a class="lead" href="https://poly.google.com/user/bTvqJ0PdkuR">poly</a>
+                <a class="lead" href="https://mewmewmewpewpewpew.tumblr.com">tumblr</a>
+                <a class="lead" href="https://vk.com/meowmeowmeowpewpewpew">vk</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">GLWT(Good Luck With That) Public License Copyright &copy; Everyone, except Author</p>
+    </div>
+</footer>
+
+</body>
+
 <script>
-    const routes = {
-        '#404': {
-            href: '#404',
-            name: 'Page not found',
-            template: '<p>Page not found</p>'
-        },
-        '': {
-            href: '#',
-            name: 'Home',
-            visible: true,
-            template: '<p>HELLO</p>'
-        },
-        '#Projects': {
-            href: '#Projects',
-            name: 'Projects',
-            visible: true,
-            template: '<p>Nothing here yet...</p>'
-        },
-        '#About': {
-            href: '#About',
-            name: 'About',
-            visible: true,
-            template: '<div><p>Hi</p>My name is Nikita Belonogov.</div>'
-        },
-    }
+    (function ($) {
+        "use strict"; // Start of use strict
 
-    router = new Vue({
-        el: '#app',
-        data: {
-            currentRoute: window.location.hash
-        },
-        computed: {
-            template: function () {
-                return routes[this.currentRoute] || routes['404']
+        // Smooth scrolling using jQuery easing
+        $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: (target.offset().top - 54)
+                    }, 1000, "easeInOutExpo");
+                    return false;
+                }
             }
-        },
-        render(h) {
-            return h(this.template)
-        }
-    })
+        });
 
-    navigation = new Vue({
-        el: '#navigation',
-        data: {
-            currentRoute: window.location.hash,
-            routes: routes
-        }
-    })
+        // Closes responsive menu when a scroll trigger link is clicked
+        $('.js-scroll-trigger').click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
 
+        // Activate scrollspy to add active class to navbar items on scroll
+        $('body').scrollspy({
+            target: '#mainNav',
+            offset: 54
+        });
 
-    window.addEventListener('popstate', () => {
-        router.currentRoute = window.location.hash
-        navigation.currentRoute = window.location.hash
-    })
+    })(jQuery); // End of use strict
 </script>
