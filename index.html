@@ -98,7 +98,7 @@
             <h3>Some Unity projects I'm currently working on</h3>
         </div>
         <div class="m-auto d-flex justify-content-around">
-            <div class="m-1 card" style="width: 20rem;">
+            <div id="card-vega-power" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">Vega Power</h4>
                     <p class="card-text">2D Platformer</p>
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="m-1 card" style="width: 20rem;">
+            <div id="card-catch-me-if-you-can" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">Catch me if you can</h4>
                     <p class="card-text">Catch all planes</p>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            <div class="m-1 card" style="width: 20rem;">
+            <div id="card-civilisationx" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">CivilisationX</h4>
                     <p class="card-text">Civilisation like game</p>
@@ -157,7 +157,7 @@
             <h3>Some of my participations to JenkinsCI</h3>
         </div>
         <div class="m-auto d-flex justify-content-around">
-            <div class="m-1 card" style="width: 20rem;">
+            <div id="card-telejenkins" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">TeleJenkins</h4>
                     <p class="card-text">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <div class="m-1 card" style="width: 20rem;">
+            <div id="card-party-parrot-status" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">Party Parrot Status</h4>
                     <p class="card-text">
@@ -192,7 +192,6 @@
                         <a class="btn btn-primary btn-sm"
                            href="https://plugins.jenkins.io/partyparrotstatus">
                             <i class="fab fa-jenkins"></i></a>
-
                     </div>
                 </div>
             </div>
@@ -264,4 +263,49 @@
         });
 
     })(jQuery); // End of use strict
+
+    // Background change | Unity Projects
+    $('#card-vega-power').hover(
+        function () {
+            $('#unityprojects').css('background-image', "url(https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg)")
+        },
+        function () {
+            $('#unityprojects').css('background-image', 'none')
+        }
+    );
+    $('#card-catch-me-if-you-can').hover(
+        function () {
+            $('#unityprojects').css('background-image', "url(https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg)")
+        },
+        function () {
+            $('#unityprojects').css('background-image', 'none')
+        }
+    );
+    $('#card-civilisationx').hover(
+        function () {
+            $('#unityprojects').css('background-image', "url(https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg)")
+        },
+        function () {
+            $('#unityprojects').css('background-image', 'none')
+        }
+    );
+
+    // Background change | Jenkins Projects
+    $('#card-telejenkins').hover(
+        function () {
+            $('#jenkinsprojects').css('background-image', "url(https://camo.githubusercontent.com/964a280317b141ce90a8653d7e993b04c6a8d3c0/68747470733a2f2f70702e766b2e6d652f633633363932362f763633363932363437312f31393364312f6641524265664263667a732e6a7067)")
+        },
+        function () {
+            $('#jenkinsprojects').css('background-image', 'none')
+        }
+    );
+
+    $('#card-party-parrot-status').hover(
+        function () {
+            $('#jenkinsprojects').css('background-image', "url(https://raw.githubusercontent.com/jenkinsci/partyparrotstatus-plugin/master/example.gif)")
+        },
+        function () {
+            $('#jenkinsprojects').css('background-image', 'none')
+        }
+    );
 </script>
