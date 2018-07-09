@@ -18,17 +18,11 @@
 
 <style>
     header {
-        padding: 154px 0 100px;
-    }
-
-    @media (min-width: 992px) {
-        header {
-            padding: 156px 0 100px;
-        }
+        padding: 154px;
     }
 
     section {
-        padding: 150px 0;
+        padding: 150px;
     }
 
     .bobble {
@@ -97,20 +91,33 @@
 <!-- Projects -->
 <section id="projects" class="bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h3>Some projects I'm currently working on:</h3>
-                <ul>
-                    <li>
-                        <a href="http://vegapower.s3-website-us-east-1.amazonaws.com">Vega Power</a>
-                    </li>
-                    <li>
-                        <a href="http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com">Catch me if you can</a>
-                    </li>
-                    <li>
-                        <a href="http://civilisationx.s3-website-us-east-1.amazonaws.com">CivilisationX</a>
-                    </li>
-                </ul>
+        <div class="col-lg-8 mx-auto">
+            <h3>Some projects I'm currently working on:</h3>
+        </div>
+        <div class="mx-auto d-flex justify-content-around">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">Vega Power</h4>
+                    <p class="card-text">2D Platformer</p>
+                    <a href="http://vegapower.s3-website-us-east-1.amazonaws.com"
+                       class="btn btn-primary">Try out</a>
+                </div>
+            </div>
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">Catch me if you can</h4>
+                    <p class="card-text">Catch all planes</p>
+                    <a href="http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com"
+                       class="btn btn-primary">Try out</a>
+                </div>
+            </div>
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">CivilisationX</h4>
+                    <p class="card-text">Civilisation like game</p>
+                    <a href="http://civilisationx.s3-website-us-east-1.amazonaws.com"
+                       class="btn btn-primary disabled">Try out</a>
+                </div>
             </div>
         </div>
     </div>
@@ -119,20 +126,20 @@
 <!-- Contact -->
 <section id="contact">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2>You can find me here:</h2>
-                <a href="https://poly.google.com/user/bTvqJ0PdkuR">
-                    <i class="bobble fab fa-5x fa-google"></i></a>
-                <a href="https://mewmewmewpewpewpew.tumblr.com">
-                    <i class="bobble fab fa-5x fa-tumblr"></i></a>
-                <a href="https://vk.com/meowmeowmeowpewpewpew">
-                    <i class="bobble fab fa-5x fa-vk"></i></a>
-                <a href="https://github.com/nikitabelonogov">
-                    <i class="bobble fab fa-5x fa-github"></i></a>
-                <a href="https://steamcommunity.com/id/wokse/inventory/">
-                    <i class="bobble fab fa-5x fa-steam"></i></a>
-            </div>
+        <div class="col-lg-8 mx-auto">
+            <h2>You can find me here:</h2>
+        </div>
+        <div class="mx-auto d-flex justify-content-around">
+            <a href="https://poly.google.com/user/bTvqJ0PdkuR">
+                <i class="bobble fab fa-5x fa-google"></i></a>
+            <a href="https://mewmewmewpewpewpew.tumblr.com">
+                <i class="bobble fab fa-5x fa-tumblr"></i></a>
+            <a href="https://vk.com/meowmeowmeowpewpewpew">
+                <i class="bobble fab fa-5x fa-vk"></i></a>
+            <a href="https://github.com/nikitabelonogov">
+                <i class="bobble fab fa-5x fa-github"></i></a>
+            <a href="https://steamcommunity.com/id/wokse/inventory/">
+                <i class="bobble fab fa-5x fa-steam"></i></a>
         </div>
     </div>
 </section>
@@ -141,7 +148,8 @@
 <footer class="py-5 bg-dark">
     <div class="container">
         <div class="m-0 text-center text-white">
-            <small>GLWT(Good Luck With That) Public License</small><br>
+            <small>GLWT(Good Luck With That) Public License</small>
+            <br>
             Copyright &copy; Everyone, except Author
         </div>
     </div>
