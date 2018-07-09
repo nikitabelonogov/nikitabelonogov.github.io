@@ -14,25 +14,74 @@
 
 <script src="//unpkg.com/vue"></script>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#Projects">Projects</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#About">About</a>
+        <ul class="navbar-nav mr-auto" v-for="(route, hash) in routes">
+            <li class="nav-item" v-if="route.visible || false">
+                <a class="nav-link" :href="route.href">{{ route.name }}</a>
             </li>
         </ul>
     </div>
 </nav>
 
 <div id="app"></div>
-<script src="./router.js"></script>
+<script>
+    const routes = {
+        '#404': {
+            href: '#404',
+            name: 'Page not found',
+            template: '<p>Page not found</p>'
+        },
+        '': {
+            href: '#',
+            name: 'Home',
+            visible: true,
+            template: '<p>HELLO</p>'
+        },
+        '#Projects': {
+            href: '#Projects',
+            name: 'Projects',
+            visible: true,
+            template: '<p>Nothing here yet...</p>'
+        },
+        '#About': {
+            href: '#About',
+            name: 'About',
+            visible: true,
+            template: '<div><p>Hi</p>My name is Nikita Belonogov.</div>'
+        },
+    }
+
+    router = new Vue({
+        el: '#app',
+        data: {
+            currentRoute: window.location.hash
+        },
+        computed: {
+            template: function () {
+                return routes[this.currentRoute] || routes['404']
+            }
+        },
+        render(h) {
+            return h(this.template)
+        }
+    })
+
+    navigation = new Vue({
+        el: '#navigation',
+        data: {
+            currentRoute: window.location.hash,
+            routes: routes
+        }
+    })
+
+
+    window.addEventListener('popstate', () => {
+        router.currentRoute = window.location.hash
+        navigation.currentRoute = window.location.hash
+    })
+</script>
