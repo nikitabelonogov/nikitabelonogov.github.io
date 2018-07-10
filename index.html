@@ -239,24 +239,20 @@
 </body>
 
 <script>
-    (function ($) {
-        "use strict";
+    $('body').scrollspy({target: "#mainNav", offset: 54});
 
-        $('body').scrollspy({target: "#mainNav", offset: 54});
-
-        $("#mainNav a").on('click', function (event) {
-            if (this.hash !== "") {
-                event.preventDefault();
-                let hash = this.hash;
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 800, function () {
-                    window.location.hash = hash;
-                });
-            }
-        });
-    })
-    (jQuery);
+    $("#mainNav a").on('click', function (event) {
+        if (this.hash !== "") {
+            $('#navbarResponsive').collapse('hide');
+            event.preventDefault();
+            let hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top - 54
+            }, 800, function () {
+                window.location.hash = hash;
+            });
+        }
+    });
 
     // Background change | Unity Projects
     $('#card-vega-power').hover(
