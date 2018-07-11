@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet"
           href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -21,30 +23,26 @@
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
           crossorigin="anonymous">
     <style>
-    header {
-        padding: 154px;
-    }
+        header, section {
+            padding: 150px 0px;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
-    section {
-        padding: 150px;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
+        .bobble {
+            transform: scale(1);
+        }
 
-    .bobble {
-        transform: scale(1);
-    }
+        .bobble:hover {
+            transform: scale(1.1);
+        }
 
-    .bobble:hover {
-        transform: scale(1.1);
-    }
-
-    .bobble:active {
-        transform: scale(1);
-    }
-</style>
+        .bobble:active {
+            transform: scale(1);
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -78,10 +76,12 @@
 
 <!-- Header -->
 <header class="bg-primary text-white">
-    <div class="container text-center">
-        <i id="dice" class="fas fa-gamepad"></i>
-        <h1>MOM!iMAGAMEDEV</h1>
-        <p class="lead">And this is my meta site</p>
+    <div class="container">
+        <div class="m-auto text-center">
+            <i id="dice" class="fas fa-gamepad"></i>
+            <h1 class="text-truncate">MOM!<wbr>iMAGAMEDEV</h1>
+            <p class="lead">And this is my meta site</p>
+        </div>
     </div>
 </header>
 
@@ -103,7 +103,7 @@
         <div class="m-auto d-flex justify-content-around">
             <h3>Some Unity projects I'm currently working on</h3>
         </div>
-        <div class="m-auto d-flex justify-content-around">
+        <div class="m-auto d-flex flex-wrap justify-content-around">
             <div id="card-vega-power" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">Vega Power</h4>
@@ -162,7 +162,7 @@
         <div class="m-auto d-flex justify-content-around">
             <h3>Some of my participations to JenkinsCI</h3>
         </div>
-        <div class="m-auto d-flex justify-content-around">
+        <div class="m-auto d-flex flex-wrap justify-content-around">
             <div id="card-telejenkins" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
                     <h4 class="card-title">TeleJenkins</h4>
