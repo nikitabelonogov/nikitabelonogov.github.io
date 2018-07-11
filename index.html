@@ -282,8 +282,12 @@
             duration: time
         }, 'swing');
         setTimeout(function () {
+            $('#dice').attr('class', 'fas fa-square');
+        }, time / 3
+        );
+        setTimeout(function () {
             $('#dice').attr('class', dices[Math.floor((Math.random() * dices.length))]);
-        }, time / 2
+        }, time * 2 / 3
         );
     });
 
