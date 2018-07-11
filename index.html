@@ -246,6 +246,21 @@
 </body>
 
 <script>
+    // Image preload
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function () {
+            (new Image()).src = this;
+        });
+    }
+
+    preload([
+        'https://raw.githubusercontent.com/nikitabelonogov/nikitabelonogov.github.io/master/images/vega-power.png',
+        'https://raw.githubusercontent.com/nikitabelonogov/nikitabelonogov.github.io/master/images/catch-me-if-you-can.png',
+        'https://raw.githubusercontent.com/nikitabelonogov/nikitabelonogov.github.io/master/images/civilisationx.png',
+        'https://camo.githubusercontent.com/964a280317b141ce90a8653d7e993b04c6a8d3c0/68747470733a2f2f70702e766b2e6d652f633633363932362f763633363932363437312f31393364312f6641524265664263667a732e6a7067',
+        'https://raw.githubusercontent.com/jenkinsci/partyparrotstatus-plugin/master/example.gif'
+    ]);
+
     // Changing logo
     const logos = ['meow meow meow', 'pew pew pew'];
     $('#navbar-brand').html(logos[Math.floor((Math.random() * logos.length))]);
