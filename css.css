@@ -1,0 +1,24 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header, section {
+    padding: 150px 0;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bobble {
+    transform: scale(1);
+}
+
+.bobble:hover {
+    transform: scale(1.1);
+}
+
+.bobble:active {
+    transform: scale(1);
+}
