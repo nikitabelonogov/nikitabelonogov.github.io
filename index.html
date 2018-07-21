@@ -12,6 +12,7 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
             integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
             crossorigin="anonymous"></script>
@@ -86,51 +87,18 @@
             <h3>Some Unity projects I'm currently working on</h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
-            <div id="card-vega-power" class="m-1 card" style="width: 20rem;">
+            <div v-for="project in projects" :id="project.id" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
-                    <h4 class="card-title">Vega Power</h4>
-                    <p class="card-text">2D Platformer</p>
+                    <h4 class="card-title">{{ project.title }}</h4>
+                    <p class="card-text">{{ project.text }}</p>
                 </div>
                 <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">In development</span>
+                    <span class="my-auto text-truncate">{{ project.status }}</span>
                     <div class="btn-group">
-                        <a class="btn btn-primary btn-sm disabled"
-                           href="https://github.com/nikitabelonogov/VegaPower">
-                            <i class="fab fa-github"></i></a>
-                        <a class="btn btn-primary btn-sm"
-                           href="http://vegapower.s3-website-us-east-1.amazonaws.com">Try out</a>
-                    </div>
-                </div>
-            </div>
-            <div id="card-catch-me-if-you-can" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">Catch me if you can</h4>
-                    <p class="card-text">Catch all planes</p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">In development</span>
-                    <div class="btn-group">
-                        <a class="btn btn-primary btn-sm disabled"
-                           href="https://github.com/nikitabelonogov/CatchMeIfYouCan">
-                            <i class="fab fa-github"></i></a>
-                        <a class="btn btn-primary btn-sm"
-                           href="http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com">Try out</a>
-                    </div>
-                </div>
-            </div>
-            <div id="card-civilisationx" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">CivilisationX</h4>
-                    <p class="card-text">Civilisation like game</p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">In development</span>
-                    <div class="btn-group">
-                        <a class="btn btn-primary btn-sm disabled"
-                           href="https://github.com/nikitabelonogov/civilizationX">
-                            <i class="fab fa-github"></i></a>
-                        <a class="btn btn-primary btn-sm"
-                           href="http://civilisationx.s3-website-us-east-1.amazonaws.com">Try out</a>
+                        <a v-if="project.github_link" class="btn btn-primary btn-sm"
+                           :href="project.github_link"><i class="fab fa-github"></i></a>
+                        <a v-if="project.demo_link" class="btn btn-primary btn-sm"
+                           :href="project.demo_link">Try out</a>
                     </div>
                 </div>
             </div>
@@ -145,41 +113,18 @@
             <h3>Some of my participations to JenkinsCI</h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
-            <div id="card-telejenkins" class="m-1 card" style="width: 20rem;">
+            <div v-for="project in projects" :id="project.id" class="m-1 card" style="width: 20rem;">
                 <div class="card-body">
-                    <h4 class="card-title">TeleJenkins</h4>
-                    <p class="card-text">
-                        This plugin allows Jenkins to send notifications via telegram bot.
-                    </p>
+                    <h4 class="card-title">{{ project.title }}</h4>
+                    <p class="card-text">{{ project.text }}</p>
                 </div>
                 <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">Released</span>
+                    <span class="my-auto text-truncate">{{ project.status }}</span>
                     <div class="btn-group">
-                        <a class="btn btn-primary btn-sm"
-                           href="https://github.com/jenkinsci/telegram-notifications-plugin">
-                            <i class="fab fa-github"></i></a>
-                        <a class="btn btn-primary btn-sm"
-                           href="https://plugins.jenkins.io/telegram-notifications">
-                            <i class="fab fa-jenkins"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div id="card-party-parrot-status" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">Party Parrot Status</h4>
-                    <p class="card-text">
-                        Providing a party parrot look to Jenkins Status indicators.
-                    </p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">Released</span>
-                    <div class="btn-group">
-                        <a class="btn btn-primary btn-sm"
-                           href="https://github.com/jenkinsci/partyparrotstatus-plugin">
-                            <i class="fab fa-github"></i></a>
-                        <a class="btn btn-primary btn-sm"
-                           href="https://plugins.jenkins.io/partyparrotstatus">
-                            <i class="fab fa-jenkins"></i></a>
+                        <a v-if="project.github_link" class="btn btn-primary btn-sm"
+                           :href="project.github_link"><i class="fab fa-github"></i></a>
+                        <a v-if="project.jenkins_link" class="btn btn-primary btn-sm"
+                           :href="project.jenkins_link"><i class="fab fa-jenkins"></i></a>
                     </div>
                 </div>
             </div>
@@ -230,6 +175,8 @@
 <script src="js/dice.js"
         crossorigin="anonymous"></script>
 <script src="js/scrollspy.js"
+        crossorigin="anonymous"></script>
+<script src="js/vue.js"
         crossorigin="anonymous"></script>
 <script src="js/js.js"
         crossorigin="anonymous"></script>
