@@ -3,12 +3,16 @@ body {
 }
 
 header, section {
-    padding: 150px 0;
+    padding: 10rem 0;
     background-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+header {
+    margin-top: 56px;
 }
 
 .bobble {

@@ -1,4 +1,4 @@
-$('body').scrollspy({target: "#mainNav", offset: 54});
+$('body').scrollspy({target: "#mainNav", offset: 56});
 
 $("#mainNav a").on('click', function (event) {
     if (this.hash !== "") {
@@ -6,7 +6,7 @@ $("#mainNav a").on('click', function (event) {
         event.preventDefault();
         let hash = this.hash;
         $('html, body').animate({
-            scrollTop: ($(hash).offset().top - 54)
+            scrollTop: ($(hash).offset().top - 56)
         }, 500, function () {
             if (history.pushState) {
                 history.pushState(null, null, hash);
