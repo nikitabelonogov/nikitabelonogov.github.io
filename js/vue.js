@@ -17,7 +17,7 @@ Vue.component('project-card', {
     '        <p v-html="text" class="card-text"></p>\n' +
     '    </div>\n' +
     '    <div class="card-footer text-muted d-flex justify-content-between">\n' +
-    '        <span class="my-auto text-truncate">{{ status }}</span>\n' +
+    '        <span class="my-auto text-truncate" v-html="status"></span>\n' +
     '        <div class="btn-group">\n' +
     '            <a-button-link v-if="links" v-for="link in links"\n' +
     '                           :key="link.link"\n' +
