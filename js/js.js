@@ -31,7 +31,7 @@ $('#card-civilisationx').hover(
 // Background change | Jenkins Projects
 $('#card-telejenkins').hover(
     function () {
-        $('#jenkinsprojects').css('background-image', "url(./images/telejenkins.jpeg)")
+        $('#jenkinsprojects').css('background-image', "url(./images/telejenkins.svg)")
     },
     function () {
         $('#jenkinsprojects').css('background-image', 'none')
@@ -40,7 +40,7 @@ $('#card-telejenkins').hover(
 
 $('#card-party-parrot-status').hover(
     function () {
-        $('#jenkinsprojects').css('background-image', "url(./images/party-parrot-status.gif)")
+        $('#jenkinsprojects').css('background-image', "url(./images/party-parrot-status.svg)")
     },
     function () {
         $('#jenkinsprojects').css('background-image', 'none')
