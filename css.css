@@ -29,3 +29,7 @@ header {
 .bobble:active {
     transform: scale(1);
 }
+
+.outline {
+    text-shadow: 1px 1px white, 1px -1px white, -1px 1px white, -1px -1px white;
+}
