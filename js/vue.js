@@ -1,7 +1,9 @@
 Vue.component('a-button-link', {
-    props: ['text', 'link'],
+    props: ['text', 'link', 'disabled'],
     template: '' +
-    '<a v-if="link" class="btn btn-primary btn-sm"\n' +
+    '<a v-if="link"\n' +
+    '   class="btn btn-primary btn-sm"\n' +
+    '   v-bind:class="{ \'disabled\': disabled }"\n' +
     '   :href="link"\n' +
     '   v-html="text"></a>\n'
 })
@@ -11,8 +13,8 @@ Vue.component('project-card', {
     template: '' +
     '<div :id="id" class="m-1 card" style="width: 20rem;">\n' +
     '    <div class="card-body">\n' +
-    '        <h4 class="card-title">{{ title }}</h4>\n' +
-    '        <p class="card-text">{{ text }}</p>\n' +
+    '        <h4 v-html="title" class="card-title"></h4>\n' +
+    '        <p v-html="text" class="card-text"></p>\n' +
     '    </div>\n' +
     '    <div class="card-footer text-muted d-flex justify-content-between">\n' +
     '        <span class="my-auto text-truncate">{{ status }}</span>\n' +
@@ -20,7 +22,8 @@ Vue.component('project-card', {
     '            <a-button-link v-if="links" v-for="link in links"\n' +
     '                           :key="link.link"\n' +
     '                           :link="link.link"\n' +
-    '                           :text="link.text">\n' +
+    '                           :text="link.text"\n' +
+    '                           :disabled="link.disabled">\n' +
     '            </a-button-link>\n' +
     '        </div>\n' +
     '    </div>\n' +
@@ -42,6 +45,7 @@ new Vue({
                     {
                         link: 'https://github.com/nikitabelonogov/VegaPower',
                         text: '<i class="fab fa-github"></i>',
+                        disabled: true,
                     },
                     {
                         link: 'http://vegapower.s3-website-us-east-1.amazonaws.com',
@@ -59,6 +63,7 @@ new Vue({
                     {
                         link: 'https://github.com/nikitabelonogov/CatchMeIfYouCan',
                         text: '<i class="fab fa-github"></i>',
+                        disabled: true,
                     },
                     {
                         link: 'http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com',
@@ -76,6 +81,7 @@ new Vue({
                     {
                         link: 'https://github.com/nikitabelonogov/civilizationX',
                         text: '<i class="fab fa-github"></i>',
+                        disabled: true,
                     },
                     {
                         link: 'http://civilisationx.s3-website-us-east-1.amazonaws.com',
