@@ -1,3 +1,27 @@
+Vue.component('project-card', {
+    props: ['id', 'title', 'text', 'status', 'github_link', 'telegram_link', 'jenkins_link', 'demo_link'],
+    template: '' +
+    '<div :id="id" class="m-1 card" style="width: 20rem;">\n' +
+    '    <div class="card-body">\n' +
+    '        <h4 class="card-title">{{ title }}</h4>\n' +
+    '        <p class="card-text">{{ text }}</p>\n' +
+    '    </div>\n' +
+    '    <div class="card-footer text-muted d-flex justify-content-between">\n' +
+    '        <span class="my-auto text-truncate">{{ status }}</span>\n' +
+    '        <div class="btn-group">\n' +
+    '            <a v-if="github_link" class="btn btn-primary btn-sm"\n' +
+    '               :href="github_link"><i class="fab fa-github"></i></a>\n' +
+    '            <a v-if="telegram_link" class="btn btn-primary btn-sm"\n' +
+    '               :href="telegram_link"><i class="fab fa-telegram"></i></a>\n' +
+    '            <a v-if="jenkins_link" class="btn btn-primary btn-sm"\n' +
+    '               :href="jenkins_link"><i class="fab fa-jenkins"></i></a>\n' +
+    '            <a v-if="demo_link" class="btn btn-primary btn-sm"\n' +
+    '               :href="demo_link">Try out</a>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '</div>\n'
+})
+
 new Vue({
     el: '#unityprojects',
     data: {

@@ -93,21 +93,14 @@
             <h3>{{ text }}</h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
-            <div v-for="project in projects" :id="project.id" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">{{ project.title }}</h4>
-                    <p class="card-text">{{ project.text }}</p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">{{ project.status }}</span>
-                    <div class="btn-group">
-                        <a v-if="project.github_link" class="btn btn-primary btn-sm"
-                           :href="project.github_link"><i class="fab fa-github"></i></a>
-                        <a v-if="project.demo_link" class="btn btn-primary btn-sm"
-                           :href="project.demo_link">Try out</a>
-                    </div>
-                </div>
-            </div>
+            <project-card v-for="project in projects"
+                          :key="project.id"
+                          :id="project.id"
+                          :title="project.title"
+                          :text="project.text"
+                          :status="project.status"
+                          :demo_link="project.demo_link">
+            </project-card>
         </div>
     </div>
 </section>
@@ -119,21 +112,15 @@
             <h3>{{ text }}</h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
-            <div v-for="project in projects" :id="project.id" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">{{ project.title }}</h4>
-                    <p class="card-text">{{ project.text }}</p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">{{ project.status }}</span>
-                    <div class="btn-group">
-                        <a v-if="project.github_link" class="btn btn-primary btn-sm"
-                           :href="project.github_link"><i class="fab fa-github"></i></a>
-                        <a v-if="project.jenkins_link" class="btn btn-primary btn-sm"
-                           :href="project.jenkins_link"><i class="fab fa-jenkins"></i></a>
-                    </div>
-                </div>
-            </div>
+            <project-card v-for="project in projects"
+                          :key="project.id"
+                          :id="project.id"
+                          :title="project.title"
+                          :text="project.text"
+                          :status="project.status"
+                          :github_link="project.github_link"
+                          :jenkins_link="project.jenkins_link">
+            </project-card>
         </div>
     </div>
 </section>
@@ -145,21 +132,15 @@
             <h3>{{ text }}</h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
-            <div v-for="project in projects" :id="project.id" class="m-1 card" style="width: 20rem;">
-                <div class="card-body">
-                    <h4 class="card-title">{{ project.title }}</h4>
-                    <p class="card-text">{{ project.text }}</p>
-                </div>
-                <div class="card-footer text-muted d-flex justify-content-between">
-                    <span class="my-auto text-truncate">{{ project.status }}</span>
-                    <div class="btn-group">
-                        <a v-if="project.github_link" class="btn btn-primary btn-sm"
-                           :href="project.github_link"><i class="fab fa-github"></i></a>
-                        <a v-if="project.telegram_link" class="btn btn-primary btn-sm"
-                           :href="project.telegram_link"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-            </div>
+            <project-card v-for="project in projects"
+                          :key="project.id"
+                          :id="project.id"
+                          :title="project.title"
+                          :text="project.text"
+                          :status="project.status"
+                          :github_link="project.github_link"
+                          :telegram_link="project.telegram_link">
+            </project-card>
         </div>
     </div>
 </section>
@@ -193,7 +174,8 @@
 <footer class="py-5 bg-dark">
     <div class="container">
         <div class="m-0 text-center text-white">
-            <small>GLWT(Good Luck With That) Public License</small><br>
+            <small>GLWT(Good Luck With That) Public License</small>
+            <br>
             Copyright &copy; Everyone, except Author<br>
             <a href="https://github.com/nikitabelonogov/nikitabelonogov.github.io">
                 This site source code <i class="fab fa-github"></i></a>
