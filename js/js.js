@@ -46,3 +46,13 @@ $('#card-party-parrot-status').hover(
         $('#jenkinsprojects').css('background-image', 'none')
     }
 );
+
+// Background change | Other Projects
+$('#card-pidorbot').hover(
+    function () {
+        $('#otherprojects').css('background-image', "url(./images/pidorbot.svg)")
+    },
+    function () {
+        $('#otherprojects').css('background-image', 'none')
+    }
+);

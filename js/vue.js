@@ -1,6 +1,7 @@
 new Vue({
     el: '#unityprojects',
     data: {
+        text: 'Some Unity projects I\'m currently working on',
         projects: [
             {
                 id: 'card-vega-power',
@@ -36,6 +37,7 @@ new Vue({
 new Vue({
     el: '#jenkinsprojects',
     data: {
+        text: 'Some of my participations to JenkinsCI',
         projects: [
             {
                 id: 'card-telejenkins',
@@ -54,6 +56,24 @@ new Vue({
                 github_link: 'https://github.com/jenkinsci/partyparrotstatus-plugin',
                 jenkins_link: 'https://plugins.jenkins.io/partyparrotstatus',
                 image_url: './images/party-parrot-status.gif',
+            },
+        ]
+    }
+})
+
+new Vue({
+    el: '#otherprojects',
+    data: {
+        text: 'And more...',
+        projects: [
+            {
+                id: 'card-pidorbot',
+                title: 'PidorBot👹',
+                text: 'Just a nasty person @NAUGHTYPIDORBOT',
+                status: 'Released',
+                github_link: 'https://github.com/co-code/pidor-bot',
+                telegram_link: 'http://t.me/NAUGHTYPIDORBOT',
+                image_url: './images/pidorbot.svg',
             },
         ]
     }
