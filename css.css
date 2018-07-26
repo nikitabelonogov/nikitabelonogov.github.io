@@ -18,6 +18,9 @@ header {
     margin-top: 56px;
 }
 
+section:nth-child(even) {background-color: var(--light)}
+section:nth-child(odd) {background-color: #FFF}
+
 .bobble {
     transform: scale(1);
 }
