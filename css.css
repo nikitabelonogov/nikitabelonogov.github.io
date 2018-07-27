@@ -18,8 +18,29 @@ header {
     margin-top: 56px;
 }
 
-section:nth-child(even) {background-color: var(--light)}
-section:nth-child(odd) {background-color: #FFF}
+section:nth-child(even) {
+    background-color: var(--light);
+}
+
+section:nth-child(odd) {
+    background-color: var(--white);
+}
+
+.outline:nth-child(even) {
+    text-shadow:
+            +1px +1px var(--light),
+            +1px -1px var(--light),
+            -1px +1px var(--light),
+            -1px -1px var(--light);
+}
+
+.outline:nth-child(odd) {
+    text-shadow:
+            +1px +1px var(--white),
+            +1px -1px var(--white),
+            -1px +1px var(--white),
+            -1px -1px var(--white);
+}
 
 .bobble {
     transform: scale(1);
@@ -31,8 +52,4 @@ section:nth-child(odd) {background-color: #FFF}
 
 .bobble:active {
     transform: scale(1);
-}
-
-.outline {
-    text-shadow: 1px 1px white, 1px -1px white, -1px 1px white, -1px -1px white;
 }
