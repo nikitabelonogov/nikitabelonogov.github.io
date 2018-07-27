@@ -91,7 +91,7 @@
 <section id="unityprojects">
     <div class="container">
         <div class="m-auto d-flex justify-content-around">
-            <h3 class="outline">{{ text }}</h3>
+            <h3 class="outline" v-html="text"></h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
             <project-card v-for="project in projects"
@@ -110,7 +110,7 @@
 <section id="jenkinsprojects">
     <div class="container">
         <div class="m-auto d-flex justify-content-around">
-            <h3 class="outline">{{ text }}</h3>
+            <h3 class="outline" v-html="text"></h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
             <project-card v-for="project in projects"
@@ -129,7 +129,7 @@
 <section id="otherprojects">
     <div class="container">
         <div class="m-auto d-flex justify-content-around">
-            <h3 class="outline">{{ text }}</h3>
+            <h3 class="outline" v-html="text"></h3>
         </div>
         <div class="m-auto d-flex flex-wrap justify-content-around">
             <project-card v-for="project in projects"

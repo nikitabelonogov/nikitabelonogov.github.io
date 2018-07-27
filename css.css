@@ -26,7 +26,7 @@ section:nth-child(odd) {
     background-color: var(--white);
 }
 
-.outline:nth-child(even) {
+section:nth-child(even) .outline {
     text-shadow:
             +1px +1px var(--light),
             +1px -1px var(--light),
@@ -34,7 +34,7 @@ section:nth-child(odd) {
             -1px -1px var(--light);
 }
 
-.outline:nth-child(odd) {
+section:nth-child(odd) .outline {
     text-shadow:
             +1px +1px var(--white),
             +1px -1px var(--white),
