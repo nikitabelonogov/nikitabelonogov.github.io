@@ -50,3 +50,11 @@ section:nth-child(odd) .outline {
 .bobble:active {
     transform : scale(1);
 }
+
+.card {
+    transform-style : preserve-3d;
+}
+
+.card-title, .card-text, .btn-group, span {
+    transform : translateZ(2em);
+}
