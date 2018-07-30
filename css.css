@@ -1,55 +1,52 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family : 'Roboto', sans-serif;
 }
 
 header, section {
-    padding: 10rem 0;
-
-    background-attachment: fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    padding                 : 10rem 0;
+    background-attachment   : fixed;
+    background-position     : center center;
+    background-repeat       : no-repeat;
+    -webkit-background-size : cover;
+    -moz-background-size    : cover;
+    -o-background-size      : cover;
+    background-size         : cover;
 }
 
 header {
-    margin-top: 56px;
+    margin-top : 56px;
 }
 
 section:nth-child(even) {
-    background-color: var(--light);
+    background-color : var(--light);
 }
 
 section:nth-child(odd) {
-    background-color: var(--white);
+    background-color : var(--white);
 }
 
 section:nth-child(even) .outline {
-    text-shadow:
-            +1px +1px var(--light),
-            +1px -1px var(--light),
-            -1px +1px var(--light),
-            -1px -1px var(--light);
+    text-shadow : +1px+1px var(--light),
+    +1px -1px var(--light),
+    -1px+1px var(--light),
+    -1px -1px var(--light);
 }
 
 section:nth-child(odd) .outline {
-    text-shadow:
-            +1px +1px var(--white),
-            +1px -1px var(--white),
-            -1px +1px var(--white),
-            -1px -1px var(--white);
+    text-shadow : +1px+1px var(--white),
+    +1px -1px var(--white),
+    -1px+1px var(--white),
+    -1px -1px var(--white);
 }
 
 .bobble {
-    transform: scale(1);
+    transform : scale(1);
 }
 
 .bobble:hover {
-    transform: scale(1.1);
+    transform : scale(1.1);
 }
 
 .bobble:active {
-    transform: scale(1);
+    transform : scale(1);
 }

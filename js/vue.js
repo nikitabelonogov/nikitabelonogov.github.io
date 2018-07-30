@@ -1,33 +1,33 @@
 Vue.component('a-button-link', {
     props: ['text', 'link', 'disabled'],
     template: '' +
-    '<a v-if="link"\n' +
-    '   class="btn btn-primary btn-sm"\n' +
-    '   v-bind:class="{ \'disabled\': disabled }"\n' +
-    '   :href="link"\n' +
-    '   v-html="text"></a>\n'
+        '<a v-if="link"\n' +
+        '   class="btn btn-primary btn-sm"\n' +
+        '   v-bind:class="{ \'disabled\': disabled }"\n' +
+        '   :href="link"\n' +
+        '   v-html="text"></a>\n'
 })
 
 Vue.component('project-card', {
     props: ['id', 'title', 'text', 'status', 'links'],
     template: '' +
-    '<div :id="id" class="m-1 card" style="width: 20rem;">\n' +
-    '    <div class="card-body">\n' +
-    '        <h4 v-html="title" class="card-title"></h4>\n' +
-    '        <p v-html="text" class="card-text"></p>\n' +
-    '    </div>\n' +
-    '    <div class="card-footer text-muted d-flex justify-content-between">\n' +
-    '        <span class="my-auto text-truncate" v-html="status"></span>\n' +
-    '        <div class="btn-group">\n' +
-    '            <a-button-link v-if="links" v-for="link in links"\n' +
-    '                           :key="link.link"\n' +
-    '                           :link="link.link"\n' +
-    '                           :text="link.text"\n' +
-    '                           :disabled="link.disabled">\n' +
-    '            </a-button-link>\n' +
-    '        </div>\n' +
-    '    </div>\n' +
-    '</div>\n'
+        '<div :id="id" class="m-1 card" style="width: 20rem;">\n' +
+        '    <div class="card-body">\n' +
+        '        <h4 v-html="title" class="card-title"></h4>\n' +
+        '        <p v-html="text" class="card-text"></p>\n' +
+        '    </div>\n' +
+        '    <div class="card-footer text-muted d-flex justify-content-between">\n' +
+        '        <span class="my-auto text-truncate" v-html="status"></span>\n' +
+        '        <div class="btn-group">\n' +
+        '            <a-button-link v-if="links" v-for="link in links"\n' +
+        '                           :key="link.link"\n' +
+        '                           :link="link.link"\n' +
+        '                           :text="link.text"\n' +
+        '                           :disabled="link.disabled">\n' +
+        '            </a-button-link>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '</div>\n'
 })
 
 new Vue({
