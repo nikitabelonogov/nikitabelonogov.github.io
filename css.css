@@ -39,19 +39,7 @@ section:nth-child(odd) .outline {
     -1px -1px var(--white);
 }
 
-.bobble {
-    transform : scale(1);
-}
-
-.bobble:hover {
-    transform : scale(1.1);
-}
-
-.bobble:active {
-    transform : scale(1);
-}
-
-.card {
+.perspective-card {
     transform-style : preserve-3d;
 }
 

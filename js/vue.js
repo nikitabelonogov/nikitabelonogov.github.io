@@ -11,7 +11,7 @@ Vue.component('a-button-link', {
 Vue.component('project-card', {
     props: ['id', 'title', 'text', 'status', 'links'],
     template: '' +
-        '<div :id="id" class="m-1 card" style="width: 20rem;">\n' +
+        '<div :id="id" class="m-1 card perspective-card" style="width: 20rem;">\n' +
         '    <div class="card-body">\n' +
         '        <h4 class="card-title" v-html="title"></h4>\n' +
         '        <p class="card-text" v-html="text"></p>\n' +

@@ -1,6 +1,6 @@
 // Fancy cards
 const incline = 10;
-$(".card")
+$(".perspective-card")
     .mousemove(function (e) {
         let relX = (e.pageX - $(this).offset().left) / $(this).width();
         let relY = (e.pageY - $(this).offset().top) / $(this).height();
