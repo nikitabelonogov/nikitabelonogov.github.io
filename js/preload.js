@@ -11,4 +11,5 @@ preload([
     './images/telejenkins.svg',
     './images/party-parrot-status.svg',
     './images/pidorbot.svg',
+    './images/split-with-bot.svg',
 ]);

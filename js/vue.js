@@ -160,6 +160,24 @@ new Vue({
                 ]
 
             },
+            {
+                id: 'split-with-bot',
+                title: 'Split with Bot🍕',
+                text: 'Collaborative book of debtors @split_with_bot',
+                status: 'Released',
+                image_url: './images/split-with-bot.svg',
+                links: [
+                    {
+                        link: 'https://github.com/nikitabelonogov/SplitWithBot',
+                        text: '<i class="fab fa-github"></i>',
+                        disabled: true,
+                    },
+                    {
+                        link: 'http://t.me/split_with_bot',
+                        text: '<i class="fab fa-telegram"></i>',
+                    },
+                ]
+            },
         ]
     }
 })

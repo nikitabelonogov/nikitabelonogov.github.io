@@ -56,3 +56,12 @@ $('#card-pidorbot').hover(
         $('#otherprojects').css('background-image', 'none')
     }
 );
+
+$('#split-with-bot').hover(
+    function () {
+        $('#otherprojects').css('background-image', "url(./images/split-with-bot.svg)")
+    },
+    function () {
+        $('#otherprojects').css('background-image', 'none')
+    }
+);
