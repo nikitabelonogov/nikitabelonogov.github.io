@@ -131,7 +131,6 @@ new Vue({
                         text: '<i class="fab fa-jenkins"></i>',
                     },
                 ]
-
             },
         ]
     }
@@ -158,7 +157,6 @@ new Vue({
                         text: '<i class="fab fa-telegram"></i>',
                     },
                 ]
-
             },
             {
                 id: 'split-with-bot',
@@ -168,9 +166,8 @@ new Vue({
                 image_url: './images/split-with-bot.svg',
                 links: [
                     {
-                        link: 'https://github.com/nikitabelonogov/SplitWithBot',
+                        link: 'https://github.com/nikitabelonogov/split-with-bot',
                         text: '<i class="fab fa-github"></i>',
-                        disabled: true,
                     },
                     {
                         link: 'http://t.me/split_with_bot',
