@@ -121,4 +121,27 @@ projects = [
       },
     ]
   },
+  {
+    id: 'jewel',
+    title: 'Jewel💎',
+    text: 'Advert dashboard',
+    status: 'In Development',
+    links: [
+      {
+        link: 'https://github.com/nikitabelonogov/split-with-bot',
+        text: '<i class="fab fa-github"></i>',
+        disabled: true,
+      },
+      {
+        link: 'https://github.com/nikitabelonogov/split-with-bot',
+        text: '<i class="fab fa-github"></i>',
+        disabled: true,
+      },
+      {
+        link: 'https://tbd',
+        text: '<i class="fas fa-link"></i>',
+        disabled: true,
+      },
+    ]
+  },
 ];
