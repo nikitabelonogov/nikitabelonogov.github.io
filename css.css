@@ -30,6 +30,10 @@ section:nth-child(odd) {
 
 .perspective-card {
     transform-style : preserve-3d;
+    z-index: 1;
+}
+.perspective-card:hover {
+    z-index: 2;
 }
 
 .card-title, .card-text, .btn-group, span {
