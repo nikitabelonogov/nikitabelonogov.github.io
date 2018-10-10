@@ -12,7 +12,9 @@ Vue.component('project-card', {
   props: ['id', 'title', 'text', 'status', 'links', 'image'],
   template: '' +
     '<div :id="id" class="m-2 card perspective-card" style="width: 20rem;">\n' +
-    '    <div class="card-img-top bg-flex-fill" v-bind:style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }"></div>\n' +
+    '    <div v-if="image"' +
+    '         class="card-img-top bg-flex-fill" ' +
+    '         v-bind:style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }"></div>\n' +
     '    <div class="card-body">\n' +
     '        <h4 class="card-title" v-html="title"></h4>\n' +
     '        <p class="card-text" v-html="text"></p>\n' +
