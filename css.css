@@ -2,9 +2,8 @@ body {
     font-family : 'Roboto', sans-serif;
 }
 
-header, section {
-    padding                 : 10rem 0;
-    background-attachment   : fixed;
+.bg-flex-fill {
+    /*background-attachment   : fixed;*/
     background-position     : center center;
     background-repeat       : no-repeat;
     -webkit-background-size : cover;
@@ -23,20 +22,6 @@ section:nth-child(even) {
 
 section:nth-child(odd) {
     background-color : var(--white);
-}
-
-section:nth-child(even) .outline {
-    text-shadow : +1px+1px var(--light),
-    +1px -1px var(--light),
-    -1px+1px var(--light),
-    -1px -1px var(--light);
-}
-
-section:nth-child(odd) .outline {
-    text-shadow : +1px+1px var(--white),
-    +1px -1px var(--white),
-    -1px+1px var(--white),
-    -1px -1px var(--white);
 }
 
 .perspective-card {
