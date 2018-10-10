@@ -47,13 +47,7 @@
                     <a class="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#unityprojects">Unity projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#jenkinsprojects">Jenkins projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#otherprojects">Other projects</a>
+                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -64,7 +58,7 @@
 </nav>
 
 <!-- Header -->
-<header class="bg-primary text-white">
+<header class="bg-primary text-white py-5" style="margin-top : 56px;">
     <div class="container">
         <div class="m-auto text-center">
             <i id="dice" class="fas fa-gamepad"></i>
@@ -76,7 +70,7 @@
 </header>
 
 <!-- About -->
-<section id="about" class="h-100">
+<section id="about" class="py-5">
     <div class="container">
         <div>
             I've collected all of the interesting projects I've code or participate in.
@@ -88,7 +82,7 @@
 </section>
 
 <!-- Projects -->
-<section id="projects">
+<section id="projects" class="py-5">
     <div class="container">
         <div class="m-auto d-flex flex-wrap justify-content-around">
             <project-card v-for="project in projects"
@@ -105,7 +99,7 @@
 </section>
 
 <!-- Contact -->
-<section id="contact">
+<section id="contact" class="py-5">
     <div class="container">
         <div class="m-0 text-center">
             <small>You can also find me here:</small>
