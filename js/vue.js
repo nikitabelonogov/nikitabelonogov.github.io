@@ -1,11 +1,14 @@
 Vue.component('a-button-link', {
-  props: ['text', 'link', 'disabled'],
+  props: ['text', 'link', 'disabled', 'tooltip'],
   template: '' +
-    '<a v-if="link"\n' +
-    '   class="btn btn-primary btn-sm"\n' +
-    '   v-bind:class="{ \'disabled\': disabled }"\n' +
-    '   :href="link"\n' +
-    '   v-html="text"></a>\n'
+    '<a v-if="link"' +
+    '   class="btn btn-primary btn-sm"' +
+    '   :class="{ \'disabled\': disabled }"' +
+    '   :href="link"' +
+    '   v-html="text"' +
+    '   data-toggle="tooltip"' +
+    '   data-placement="top"' +
+    '   :title="tooltip"></a>\n'
 });
 
 Vue.component('project-card', {
@@ -14,7 +17,7 @@ Vue.component('project-card', {
     '<div :id="id" class="m-2 card perspective-card" style="width: 20rem;">\n' +
     '    <div v-if="image"' +
     '         class="card-img-top bg-flex-fill" ' +
-    '         v-bind:style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }"></div>\n' +
+    '         :style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }"></div>\n' +
     '    <div class="card-body">\n' +
     '        <h4 class="card-title" v-html="title"></h4>\n' +
     '        <p class="card-text" v-html="text"></p>\n' +
@@ -26,7 +29,8 @@ Vue.component('project-card', {
     '                           :key="link.link"\n' +
     '                           :link="link.link"\n' +
     '                           :text="link.text"\n' +
-    '                           :disabled="link.disabled">\n' +
+    '                           :disabled="link.disabled"\n' +
+    '                           :tooltip="link.tooltip">\n' +
     '            </a-button-link>\n' +
     '        </div>\n' +
     '    </div>\n' +

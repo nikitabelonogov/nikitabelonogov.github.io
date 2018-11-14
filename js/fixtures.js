@@ -128,19 +128,18 @@ projects = [
     status: 'In Development',
     links: [
       {
-        link: 'https://github.com/nikitabelonogov/split-with-bot',
+        link: 'https://github.com/ooow/jewel-f',
         text: '<i class="fab fa-github"></i>',
-        disabled: true,
+        tooltip: 'Private GitHub repository FrontEnd',
       },
       {
-        link: 'https://github.com/nikitabelonogov/split-with-bot',
+        link: 'https://github.com/ooow/jewel-b',
         text: '<i class="fab fa-github"></i>',
-        disabled: true,
+        tooltip: 'Private GitHub repository BackEnd',
       },
       {
-        link: 'https://tbd',
+        link: 'http://jewel-frontend.s3-website-eu-west-1.amazonaws.com',
         text: '<i class="fas fa-link"></i>',
-        disabled: true,
       },
     ]
   },
