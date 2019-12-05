@@ -18,7 +18,7 @@ projects = [
         id: 'card-vega-power',
         title: 'Vega Power',
         text: '2D Platformer',
-        status: 'In Development',
+        status: 'Postponed',
         image_url: './images/vega-power.png',
         tags: ['unity'],
         links: [
@@ -37,7 +37,7 @@ projects = [
         id: 'card-catch-me-if-you-can',
         title: 'Catch me if you can',
         text: 'Catch all planes',
-        status: 'In Development',
+        status: 'Postponed',
         image_url: './images/catch-me-if-you-can.png',
         tags: ['unity'],
         links: [
@@ -56,7 +56,7 @@ projects = [
         id: 'card-civilisationx',
         title: 'CivilisationX',
         text: 'Civilisation like game',
-        status: 'In Development',
+        status: 'Postponed',
         image_url: './images/civilisationx.png',
         tags: ['unity'],
         links: [
@@ -147,7 +147,7 @@ projects = [
         id: 'jewel',
         title: 'Jewel💎',
         text: 'Advert dashboard',
-        status: 'In Development',
+        status: 'Closed',
         links: [
             {
                 link: 'https://github.com/ooow/jewel-f',
