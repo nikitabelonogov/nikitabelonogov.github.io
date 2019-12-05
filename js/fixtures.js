@@ -5,6 +5,7 @@ projects = [
         text: '',
         status: 'In Development',
         image_url: './images/yetanotherrougelike.png',
+        tags: ['unity'],
         links: [
             {
                 link: 'https://github.com/nikitabelonogov/YetAnotherRoguelike',
@@ -19,6 +20,7 @@ projects = [
         text: '2D Platformer',
         status: 'In Development',
         image_url: './images/vega-power.png',
+        tags: ['unity'],
         links: [
             {
                 link: 'https://github.com/nikitabelonogov/VegaPower',
@@ -37,6 +39,7 @@ projects = [
         text: 'Catch all planes',
         status: 'In Development',
         image_url: './images/catch-me-if-you-can.png',
+        tags: ['unity'],
         links: [
             {
                 link: 'https://github.com/nikitabelonogov/CatchMeIfYouCan',
@@ -55,6 +58,7 @@ projects = [
         text: 'Civilisation like game',
         status: 'In Development',
         image_url: './images/civilisationx.png',
+        tags: ['unity'],
         links: [
             {
                 link: 'https://github.com/nikitabelonogov/civilizationX',
@@ -73,6 +77,7 @@ projects = [
         text: 'This plugin allows Jenkins to send notifications via telegram bot.',
         status: 'Released',
         image_url: './images/telejenkins.svg',
+        tags: ['Jenkins'],
         links: [
             {
                 link: 'https://github.com/jenkinsci/telegram-notifications-plugin',
@@ -90,6 +95,7 @@ projects = [
         text: 'Providing a party parrot look to Jenkins Status indicators.',
         status: 'Released',
         image_url: './images/party-parrot-status.svg',
+        tags: ['Jenkins'],
         links: [
             {
                 link: 'https://github.com/jenkinsci/partyparrotstatus-plugin',
@@ -107,6 +113,7 @@ projects = [
         text: 'Just a nasty person @NAUGHTYPIDORBOT',
         status: 'Released',
         image_url: './images/pidorbot.svg',
+        tags: ['telegram', 'bot'],
         links: [
             {
                 link: 'https://github.com/co-code/pidor-bot',
@@ -124,6 +131,7 @@ projects = [
         text: 'Collaborative book of debtors @split_with_bot',
         status: 'Released',
         image_url: './images/split-with-bot.svg',
+        tags: ['telegram', 'bot'],
         links: [
             {
                 link: 'https://github.com/nikitabelonogov/split-with-bot',

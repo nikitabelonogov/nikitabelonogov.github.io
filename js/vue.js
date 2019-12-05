@@ -12,12 +12,14 @@ Vue.component('a-button-link', {
 });
 
 Vue.component('project-card', {
-  props: ['id', 'title', 'text', 'status', 'links', 'image'],
+  props: ['id', 'title', 'text', 'status', 'links', 'image', 'tags'],
   template: '' +
     '<div :id="id" class="m-2 card perspective-card" style="width: 20rem;">\n' +
     '    <div v-if="image"' +
     '         class="card-img-top bg-flex-fill" ' +
-    '         :style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }"></div>\n' +
+    '         :style="{ \'background-image\': \'url(\' + image + \')\', height: \'5rem\' }">' +
+      '<span v-if="tags" v-for="tag in tags" class="badge badge-pill badge-primary" v-html="tag"></span>' +
+      '</div>\n' +
     '    <div class="card-body">\n' +
     '        <h4 class="card-title" v-html="title"></h4>\n' +
     '        <p class="card-text" v-html="text"></p>\n' +
