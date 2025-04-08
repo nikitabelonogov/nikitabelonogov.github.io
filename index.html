@@ -36,60 +36,23 @@
 
 <body id="page-top">
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-        <a id="navbar-brand" class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <!-- Header -->
-<header class="bg-primary text-white py-5" style="margin-top : 56px;">
+<header class="bg-primary text-white py-5">
     <div class="container">
         <div class="m-auto text-center">
             <i id="dice" class="fas fa-gamepad"></i>
-            <h1 class="text-truncate">MOM!
-                <wbr>
-                iMAGAMEDEV
+            <h1 class="text-truncate">
+                I'M A GAMEDEV
             </h1>
             <p class="lead">And this is my meta site</p>
         </div>
     </div>
 </header>
 
-<!-- About -->
-<section id="about" class="py-5">
-    <div class="container">
-        <div>
-            I've collected all the interesting projects I've code or participate in.
-        </div>
-        <div>
-            So this site is a kind of portfolio of mine.
-        </div>
-    </div>
-</section>
-
 <!-- Projects -->
 <section id="projects" class="py-5">
     <div class="container">
-        <div class="m-auto d-flex flex-wrap justify-content-around">
+        <div class="m-auto d-flex flex-wrap justify-content-center">
             <project-card v-for="project in projects"
                           :key="project.id"
                           :id="project.id"
@@ -100,29 +63,6 @@
                           :image="project.image_url"
                           :tags="project.tags">
             </project-card>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="py-5">
-    <div class="container">
-        <div class="m-0 text-center">
-            <small>You can also find me here:</small>
-        </div>
-        <div class="mx-auto d-flex justify-content-center">
-            <a class="perspective-card" href="https://poly.google.com/user/bTvqJ0PdkuR">
-                <i class="m-1 fab fa-google"></i></a>
-            <a class="perspective-card" href="https://mewmewmewpewpewpew.tumblr.com">
-                <i class="m-1 fab fa-tumblr"></i></a>
-            <a class="perspective-card" href="https://github.com/nikitabelonogov">
-                <i class="m-1 fab fa-github"></i></a>
-            <a class="perspective-card" href="https://vk.com/meowmeowmeowpewpewpew">
-                <i class="m-1 fab fa-vk"></i></a>
-            <a class="perspective-card" href="https://t.me/meowmeowmeowpewpewpew">
-                <i class="m-1 fab fa-telegram"></i></a>
-            <a class="perspective-card" href="https://steamcommunity.com/id/wokse">
-                <i class="m-1 fab fa-steam"></i></a>
         </div>
     </div>
 </section>
@@ -143,22 +83,13 @@
 
 </body>
 
-<script src="js/preload.js"
-        crossorigin="anonymous"></script>
-<script src="js/dice.js"
-        crossorigin="anonymous"></script>
-<script src="js/scrollspy.js"
-        crossorigin="anonymous"></script>
-<script src="js/fixtures.js"
-        crossorigin="anonymous"></script>
-<script src="js/vue.js"
-        crossorigin="anonymous"></script>
-<script src="js/js.js"
-        crossorigin="anonymous"></script>
-<script src="js/perspectivecards.js"
-        crossorigin="anonymous"></script>
-<script src="js/tooltip.js"
-        crossorigin="anonymous"></script>
-
+<script crossorigin="anonymous" src="js/preload.js"></script>
+<script crossorigin="anonymous" src="js/dice.js"></script>
+<script crossorigin="anonymous" src="js/scrollspy.js"></script>
+<script crossorigin="anonymous" src="js/fixtures.js"></script>
+<script crossorigin="anonymous" src="js/vue.js"></script>
+<script crossorigin="anonymous" src="js/js.js"></script>
+<script crossorigin="anonymous" src="js/perspectivecards.js"></script>
+<script crossorigin="anonymous" src="js/tooltip.js"></script>
 
 </html>

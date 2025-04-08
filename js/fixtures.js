@@ -1,24 +1,9 @@
 projects = [
     {
-        id: 'yetanotherrougelike',
-        title: 'Yet another rougelike',
-        text: '',
-        status: 'In Development',
-        image_url: './images/yetanotherrougelike.png',
-        tags: ['unity'],
-        links: [
-            {
-                link: 'https://github.com/nikitabelonogov/YetAnotherRoguelike',
-                text: '<i class="fab fa-github"></i>',
-                disabled: true,
-            },
-        ]
-    },
-    {
         id: 'card-vega-power',
         title: 'Vega Power',
         text: '2D Platformer',
-        status: 'Postponed',
+        status: 'Abandoned',
         image_url: './images/vega-power.png',
         tags: ['unity'],
         links: [
@@ -37,7 +22,7 @@ projects = [
         id: 'card-catch-me-if-you-can',
         title: 'Catch me if you can',
         text: 'Catch all planes',
-        status: 'Postponed',
+        status: 'Abandoned',
         image_url: './images/catch-me-if-you-can.png',
         tags: ['unity'],
         links: [
@@ -147,7 +132,7 @@ projects = [
         id: 'jewel',
         title: 'Jewel💎',
         text: 'Advert dashboard',
-        status: 'Closed',
+        status: 'Abandoned',
         links: [
             {
                 link: 'https://github.com/ooow/jewel-f',
@@ -158,10 +143,6 @@ projects = [
                 link: 'https://github.com/ooow/jewel-b',
                 text: '<i class="fab fa-github"></i>',
                 tooltip: 'Private GitHub repository BackEnd',
-            },
-            {
-                link: 'http://jewel-frontend.s3-website-eu-west-1.amazonaws.com',
-                text: '<i class="fas fa-link"></i>',
             },
         ]
     },

@@ -1,13 +1,13 @@
+:root {
+    --light: #f0f0f0;
+    --white: #ffffff;
+}
+
 body {
     font-family : 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', sans-serif;
-}
-
 .bg-flex-fill {
-    /*background-attachment   : fixed;*/
     background-position     : center center;
     background-repeat       : no-repeat;
     -webkit-background-size : cover;
@@ -17,21 +17,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 section:nth-child(even) {
-    background-color : var(--light);
+    background-color : var(--light) !important;
 }
 
 section:nth-child(odd) {
-    background-color : var(--white);
-}
-
-.perspective-card {
-    transform-style : preserve-3d;
-    z-index: 1;
-}
-.perspective-card:hover {
-    z-index: 2;
-}
-
-.card-title, .card-text, .btn-group, span {
-    transform : translateZ(2em);
+    background-color : var(--white) !important;
 }

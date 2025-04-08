@@ -6,6 +6,12 @@ const dices = [
     'fas fa-dice-five',
     'fas fa-dice-six'
 ];
+
+// on mouse hover change cursor to pointer
+$("#dice").hover(function () {
+    $(this).css('cursor', 'pointer');
+});
+
 $("#dice").on('click', function (event) {
     let time = 1000;
     let angle = -1080;
