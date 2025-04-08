@@ -8,6 +8,12 @@ projects = [
     tags: ['unity', 'game', 'game jam'],
     links: [
       {
+        link: 'https://github.com/nikitabelonogov/YouAreTheWeapon',
+        text: '<i class="fa-brands fa-github"></i>',
+        tooltip: 'Private GitHub repository',
+        disabled: true,
+      },
+      {
         link: 'https://nikitabelonogov.itch.io/u-are-the-weapon',
         text: '<i class="fa-brands fa-itch-io"></i>',
       },
@@ -22,6 +28,12 @@ projects = [
     image_url: './images/space-shift.png',
     tags: ['unity', 'game', 'game jam'],
     links: [
+      {
+        link: 'https://github.com/nikitabelonogov/ShipShift',
+        text: '<i class="fa-brands fa-github"></i>',
+        tooltip: 'Private GitHub repository',
+        disabled: true,
+      },
       {
         link: 'https://nikitabelonogov.itch.io/spaceshift',
         text: '<i class="fa-brands fa-itch-io"></i>',
@@ -39,7 +51,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/nikitabelonogov/VegaPower',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
         disabled: true,
       },
       {
@@ -59,7 +71,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/nikitabelonogov/CatchMeIfYouCan',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
         disabled: true,
       },
       {
@@ -79,7 +91,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/nikitabelonogov/civilizationX',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
         disabled: true,
       },
       {
@@ -118,7 +130,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/jenkinsci/partyparrotstatus-plugin',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
       },
       {
         link: 'https://plugins.jenkins.io/partyparrotstatus',
@@ -137,7 +149,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/co-code/pidor-bot',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
       },
       {
         link: 'http://t.me/NAUGHTYPIDORBOT',
@@ -156,7 +168,7 @@ projects = [
     links: [
       {
         link: 'https://github.com/nikitabelonogov/split-with-bot',
-        text: '<i class="fab fa-github"></i>',
+        text: '<i class="fa-brands fa-github"></i>',
       },
       {
         link: 'http://t.me/split_with_bot',
@@ -173,13 +185,15 @@ projects = [
     links: [
       {
         link: 'https://github.com/ooow/jewel-f',
-        text: '<i class="fab fa-github"></i>',
-        tooltip: 'Private GitHub repository FrontEnd',
+        text: '<i class="fa-brands fa-github"></i>',
+        tooltip: 'Private GitHub repository',
+        disabled: true,
       },
       {
         link: 'https://github.com/ooow/jewel-b',
-        text: '<i class="fab fa-github"></i>',
-        tooltip: 'Private GitHub repository BackEnd',
+        text: '<i class="fa-brands fa-github"></i>',
+        tooltip: 'Private GitHub repository',
+        disabled: true,
       },
     ]
   },
