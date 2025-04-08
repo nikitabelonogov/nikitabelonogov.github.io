@@ -6,11 +6,10 @@ $(".perspective-card")
     let relY = (e.pageY - $(this).offset().top) / $(this).height();
     let inclineX = -(relX - .5) * incline;
     const inclineY = (relY - .5) * incline;
-    $(this).css('transform',
-      'perspective(400px) ' +
-      'rotateX(' + inclineY + 'deg) ' +
-      'rotateY(' + inclineX + 'deg) ' +
-      'scale(1.1)');
+    $(this).css(
+      'transform',
+      `perspective(400px) rotateX(${inclineY}deg) rotateY(${inclineX}deg)`
+    );
   })
   .mouseleave(function (e) {
     $(this).css('transform', '');
