@@ -10,19 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
           crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-            crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
           crossorigin="anonymous">
@@ -52,16 +42,258 @@
 <section id="projects" class="py-5">
     <div class="container">
         <div class="m-auto d-flex flex-wrap justify-content-center">
-            <project-card v-for="project in projects"
-                          :key="project.id"
-                          :id="project.id"
-                          :title="project.title"
-                          :text="project.text"
-                          :status="project.status"
-                          :links="project.links"
-                          :image="project.image_url"
-                          :tags="project.tags">
-            </project-card>
+            <div id="uaretheweapon" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/u-are-the-weapon.png'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">unity</span>
+                    <span class="badge rounded-pill text-bg-primary">game</span>
+                    <span class="badge rounded-pill text-bg-primary">game jam</span>
+                    <h4 class="card-title">U are the weapon</h4>
+                    <p class="card-text">Theme: "You Are The Weapon"</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/YouAreTheWeapon"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm disabled"
+                           aria-label="Private GitHub repository"
+                           data-bs-original-title="Private GitHub repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://nikitabelonogov.itch.io/u-are-the-weapon" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-itch-io"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="space-shift" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/space-shift.png'); height: 5rem;">
+
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">unity</span>
+                    <span class="badge rounded-pill text-bg-primary">game</span>
+                    <span class="badge rounded-pill text-bg-primary">game jam</span>
+                    <h4 class="card-title">Space Shift</h4>
+                    <p class="card-text">Adventure game that will make you question the fundamental reality of space
+                        itself.</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/ShipShift" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm disabled"
+                           aria-label="Private GitHub repository"
+                           data-bs-original-title="Private GitHub repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://nikitabelonogov.itch.io/spaceshift"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-itch-io"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="vega-power" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/vega-power.png'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">unity</span>
+                    <span class="badge rounded-pill text-bg-primary">game</span>
+                    <h4 class="card-title">Vega Power</h4>
+                    <p class="card-text">2D Platformer</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Abandoned</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/VegaPower" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm disabled">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://vegapower.s3-website-us-east-1.amazonaws.com" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm">Try out</a>
+                    </div>
+                </div>
+            </div>
+            <div id="catch-me-if-you-can" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/catch-me-if-you-can.png'); height: 5rem;">
+
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">unity</span>
+                    <span class="badge rounded-pill text-bg-primary">game</span>
+                    <h4 class="card-title">Catch me if you can</h4>
+                    <p class="card-text">Catch all planes</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Abandoned</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/CatchMeIfYouCan"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm disabled">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://catchmeifyoucan.s3-website-us-east-1.amazonaws.com" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm">
+                            Try out
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="civilisationx" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/civilisationx.png'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">unity</span>
+                    <span class="badge rounded-pill text-bg-primary">game</span>
+                    <h4 class="card-title">CivilisationX</h4>
+                    <p class="card-text">Civilisation like game</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Abandoned</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/civilizationX"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm disabled">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://civilisationx.s3-website-us-east-1.amazonaws.com" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm">Try out</a>
+                    </div>
+                </div>
+            </div>
+            <div id="telejenkins" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/telejenkins.svg'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">jenkins</span>
+                    <span class="badge rounded-pill text-bg-primary">plugin</span>
+                    <h4 class="card-title">TeleJenkins</h4>
+                    <p class="card-text">This plugin allows Jenkins to send notifications via telegram bot.</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/jenkinsci/telegram-notifications-plugin"
+                           data-toggle="tooltip" data-placement="top" class="btn btn-primary btn-sm">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://plugins.jenkins.io/telegram-notifications"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-jenkins"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="party-parrot-status" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/party-parrot-status.svg'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">jenkins</span>
+                    <span class="badge rounded-pill text-bg-primary">plugin</span>
+                    <h4 class="card-title">Party Parrot Status</h4>
+                    <p class="card-text">Providing a party parrot look to Jenkins Status indicators.</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/jenkinsci/partyparrotstatus-plugin"
+                           data-toggle="tooltip" data-placement="top" class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://plugins.jenkins.io/partyparrotstatus"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-jenkins"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="pidorbot" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/pidorbot.svg'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">telegram</span>
+                    <span class="badge rounded-pill text-bg-primary">bot</span>
+                    <h4 class="card-title">PidorBot</h4>
+                    <p class="card-text">Just a nasty person @NAUGHTYPIDORBOT</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/co-code/pidor-bot" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://t.me/NAUGHTYPIDORBOT"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="split-with-bot" class="m-2 card perspective-card" style="width: 20rem;">
+                <div class="card-img-top bg-flex-fill"
+                     style="background-image: url('./images/split-with-bot.svg'); height: 5rem;">
+                </div>
+                <div class="card-body">
+                    <span class="badge rounded-pill text-bg-primary">telegram</span>
+                    <span class="badge rounded-pill text-bg-primary">bot</span>
+                    <h4 class="card-title">Split with Bot</h4>
+                    <p class="card-text">Collaborative book of debtors @split_with_bot</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Published</span>
+                    <div>
+                        <a href="https://github.com/nikitabelonogov/split-with-bot"
+                           data-toggle="tooltip" data-placement="top" class="btn btn-primary btn-sm">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://t.me/split_with_bot"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="jewel" class="m-2 card perspective-card" style="width: 20rem;"><!---->
+                <div class="card-body"><h4 class="card-title">Jewel💎</h4>
+                    <p class="card-text">Advert dashboard</p>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <span class="my-auto text-truncate">Abandoned</span>
+                    <div>
+                        <a href="https://github.com/ooow/jewel-f" data-toggle="tooltip"
+                           data-placement="top" class="btn btn-primary btn-sm disabled"
+                           aria-label="Private GitHub repository"
+                           data-bs-original-title="Private GitHub repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://github.com/ooow/jewel-b"
+                           data-toggle="tooltip" data-placement="top"
+                           class="btn btn-primary btn-sm disabled"
+                           aria-label="Private GitHub repository"
+                           data-bs-original-title="Private GitHub repository">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -74,7 +306,8 @@
                 GLWT(Good Luck With That) Public License<br>
                 Copyright &copy; Everyone, except Author<br>
                 <a href="https://github.com/nikitabelonogov/nikitabelonogov.github.io">
-                    This site source code <i class="fab fa-github"></i></a>
+                    This site source code <i class="fab fa-github"></i>
+                </a>
             </small>
         </div>
     </div>
@@ -83,10 +316,6 @@
 </body>
 
 <script crossorigin="anonymous" src="js/dice.js"></script>
-<script crossorigin="anonymous" src="js/data.js"></script>
-<script crossorigin="anonymous" src="js/vue.js"></script>
-<script crossorigin="anonymous" src="js/js.js"></script>
-<script crossorigin="anonymous" src="js/perspectivecards.js"></script>
-<script crossorigin="anonymous" src="js/tooltip.js"></script>
+<script crossorigin="anonymous" src="js/perspective-card.js"></script>
 
 </html>

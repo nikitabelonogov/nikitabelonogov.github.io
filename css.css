@@ -11,6 +11,15 @@ body {
     background-size         : cover;
 }
 
-.badge {
-    cursor: pointer;
+.perspective-card {
+    transform-style : preserve-3d;
+    z-index         : 1;
+}
+
+.perspective-card:hover {
+    z-index : 2;
+}
+
+.card-body {
+    transform : translateZ(1em);
 }
