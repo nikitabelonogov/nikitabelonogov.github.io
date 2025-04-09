@@ -3,17 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="p:domain_verify" content="70537f51603975869d2951282ea26a94"/>
     <link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/gh-pages/72x72/1f530.png">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
           crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
     <link href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
           rel="stylesheet"
           crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="css.css"
+    <link href="css.css"
+          rel="stylesheet"
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
           rel="stylesheet">
@@ -21,10 +27,40 @@
 
 <body>
 
-<div id="app"></div>
+<!-- Header -->
+<header class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="m-auto text-center">
+            <i id="dice" class="fas fa-gamepad"></i>
+            <h1 class="text-truncate">
+                I'M A GAMEDEV
+            </h1>
+            <p class="lead">And this is my meta site</p>
+        </div>
+    </div>
+</header>
 
-<script crossorigin="anonymous" src="js.js"></script>
+<!-- Projects -->
+<section id="app" class="py-5">
+
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <div class="m-0 text-center text-white">
+            <small>
+                GLWT(Good Luck With That) Public License<br>
+                Copyright &copy; Everyone, except Author<br>
+                <a href="https://github.com/nikitabelonogov/nikitabelonogov.github.io">
+                    This site source code <i class="fab fa-github"></i></a>
+            </small>
+        </div>
+    </div>
+</footer>
 
 </body>
+
+<script crossorigin="anonymous" src="js.js"></script>
 
 </html>
