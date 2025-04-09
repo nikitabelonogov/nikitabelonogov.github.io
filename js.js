@@ -258,10 +258,10 @@ const Card = defineComponent({
          @mouseover="hovered = true"
          @mouseleave="hovered = false"
          @mousemove="handleMouseMove"
-         :style="{ transform: hovered ? 'perspective(600px) scale(1.05) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)' : 'scale(1)'}">
+         :style="{ transform: hovered ? 'perspective(600px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)' : '' } ">
       <div v-if="image"
            class="card-img-top bg-flex-fill"
-           :style="{ 'background-image': 'url(' + image + ')', height: '6rem' }">
+           :style="{ 'background-image': 'url(' + image + ')', height: '8rem' }">
       </div>
       <div class="card-body">
         <span v-if="tags" v-for="tag in tags" class="badge rounded-pill text-bg-primary" v-html="tag"></span>
