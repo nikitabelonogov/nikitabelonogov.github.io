@@ -233,9 +233,9 @@ const Card = defineComponent({
   components: {LinkButton},
   data() {
     return {
-      hovered: false,
-      rotationX: 0,
-      rotationY: 0,
+      rotationX: 0.5,
+      rotationY: 0.5,
+      highlight_offset: 50,
     }
   },
   methods: {
@@ -243,27 +243,24 @@ const Card = defineComponent({
       const rect = e.currentTarget.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (x - centerX) / 10;
-      this.rotationX = rotateX;
-      this.rotationY = -rotateY;
+      this.rotationX = x / rect.width;
+      this.rotationY = y / rect.height;
     }
   },
   template: `
     <div :id="id"
-         class="m-2 card perspective-card"
+         class="m-2 card"
          style="width: 20rem;"
-         @mouseover="hovered = true"
-         @mouseleave="hovered = false"
+         @mouseleave="rotationY = 0.5; rotationX = 0.5"
          @mousemove="handleMouseMove"
-         :style="{ transform: hovered ? 'perspective(600px) rotateX(' + rotationX + 'deg) rotateY(' + rotationY + 'deg)' : '' } ">
+         :style="{ transform: 'perspective(600px) rotateX(' + (-20 + rotationY * 40 ) + 'deg) rotateY(' + (20 - rotationX * 40) + 'deg)'}">
+      <div class="card-overlay"
+           :style="{ background: 'linear-gradient(45deg, transparent '+ (20 + rotationX * highlight_offset) +'%, rgba(255,255,255,0.4) '+ (20 + rotationX * highlight_offset) +'%, rgba(255,255,255,0.4) '+ (30 + rotationX * highlight_offset) +'%, transparent '+ (30 + rotationX * highlight_offset) +'%, transparent '+ (40 + rotationX * highlight_offset) +'%, rgba(255,255,255,0.4) '+ (40 + rotationX * highlight_offset) +'%, rgba(255,255,255,0.4) '+ (60 + rotationX * highlight_offset) +'%, transparent '+ (60 + rotationX * highlight_offset) +'%, transparent)' }"></div>
       <div v-if="image"
            class="card-img-top bg-flex-fill"
            :style="{ 'background-image': 'url(' + image + ')', height: '8rem' }">
       </div>
-      <div class="card-body">
+      <div class="card-body" style="transform: translateZ(1000rem)">
         <span v-if="tags" v-for="tag in tags" class="badge rounded-pill text-bg-primary" v-html="tag"></span>
         <h4 class="card-title" v-html="title"></h4>
         <p class="card-text" v-html="text"></p>
@@ -306,4 +303,4 @@ const App = {
   `
 };
 
-createApp(App).mount('#app')
+  createApp(App).mount('#app')
