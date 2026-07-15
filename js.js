@@ -165,7 +165,7 @@ const projects = [
   {
     id: 'uaretheweapon',
     title: 'U are the weapon',
-    text: 'Game-jam entry. Theme: "You Are The Weapon".',
+    text: 'Theme: "You Are The Weapon".',
     status: 'published',
     image: './images/u-are-the-weapon.webp',
     pixelated: true,
