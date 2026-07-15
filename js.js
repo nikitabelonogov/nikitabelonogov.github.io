@@ -139,6 +139,19 @@
 
 const projects = [
   {
+    id: 'gambling-n-dungeons',
+    title: 'Gambling & Dungeons',
+    text: 'Theme: "Spin to Win".',
+    status: 'published',
+    image: './images/gambling-n-dungeons.webp',
+    pixelated: true,
+    tags: ['unity', 'game', 'game jam'],
+    links: [
+      {icon: 'fa-brands fa-github', label: 'GitHub', disabled: true, tooltip: 'Private GitHub repository'},
+      {href: 'https://nikitabelonogov.itch.io/gambling-n-dungeons', icon: 'fa-brands fa-itch-io', label: 'itch.io'},
+    ],
+  },
+  {
     id: 'blackbook',
     title: 'Black Book',
     text: 'Graffiti sketches',
