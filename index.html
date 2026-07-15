@@ -1,66 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="HandheldFriendly" content="true">
-    <meta name="p:domain_verify" content="70537f51603975869d2951282ea26a94"/>
-    <link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/gh-pages/72x72/1f530.png">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    <link href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
-          rel="stylesheet"
-          crossorigin="anonymous">
-    <link href="css.css"
-          rel="stylesheet"
-          crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
+    <title>Nikita Belonogov — gamedev, plugins & bots</title>
+    <meta name="description" content="Personal site of Nikita Belonogov: games, Jenkins plugins and Telegram bots.">
+    <meta name="theme-color" content="#0b0d16">
+    <meta property="og:title" content="Nikita Belonogov — gamedev, plugins & bots">
+    <meta property="og:description" content="Games, Jenkins plugins and Telegram bots.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nikitabelonogov.github.io">
+    <meta property="og:image" content="https://nikitabelonogov.github.io/images/space-shift.webp">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
           rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
+          rel="stylesheet">
+    <link href="css.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.prod.js" defer></script>
+    <script src="js.js" defer></script>
 </head>
 
 <body>
 
-<!-- Header -->
-<header class="bg-primary text-white py-5">
-    <div class="container">
-        <div class="m-auto text-center">
-            <i id="dice" class="fas fa-gamepad"></i>
-            <h1 class="text-truncate">
-                I'M A GAMEDEV
-            </h1>
-            <p class="lead">And this is my meta site</p>
-        </div>
-    </div>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header class="hero">
+    <p class="hero-kicker">I'm a gamedev</p>
+    <h1>Nikita Belonogov</h1>
+    <p class="hero-tagline">I make games, Jenkins plugins and Telegram bots.<br>And this is my meta site.</p>
+    <nav class="hero-links" aria-label="Contacts">
+        <a class="icon-btn" href="https://github.com/nikitabelonogov" aria-label="GitHub" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i></a>
+        <a class="icon-btn" href="https://nikitabelonogov.itch.io" aria-label="itch.io" target="_blank" rel="noopener">
+            <i class="fa-brands fa-itch-io"></i></a>
+        <a class="icon-btn" href="https://www.instagram.com/wokseone/" aria-label="Instagram" target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i></a>
+        <a class="icon-btn" href="mailto:waksaone@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i></a>
+    </nav>
 </header>
 
-<!-- Projects -->
-<section id="app" class="py-5">
+<main id="app"></main>
 
-</section>
-
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <div class="m-0 text-center text-white">
-            <small>
-                GLWT(Good Luck With That) Public License<br>
-                Copyright &copy; Everyone, except Author<br>
-                <a href="https://github.com/nikitabelonogov/nikitabelonogov.github.io">
-                    This site source code <i class="fab fa-github"></i></a>
-            </small>
-        </div>
-    </div>
+<footer>
+    <small>
+        GLWT (Good Luck With That) Public License · Copyright &copy; Everyone, except Author<br>
+        <a href="https://github.com/nikitabelonogov/nikitabelonogov.github.io">
+            This site source code <i class="fa-brands fa-github"></i></a>
+    </small>
 </footer>
 
 </body>
-
-<script crossorigin="anonymous" src="js.js"></script>
 
 </html>

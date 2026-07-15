@@ -1,23 +1,333 @@
+:root {
+    --bg           : #0b0d16;
+    --text         : #e8eaf2;
+    --text-dim     : #9aa0b4;
+    --glass        : rgba(255, 255, 255, 0.07);
+    --glass-strong : rgba(255, 255, 255, 0.12);
+    --glass-border : rgba(255, 255, 255, 0.14);
+    --accent       : #8b7cf8;
+    --accent-soft  : rgba(139, 124, 248, 0.16);
+    color-scheme   : dark;
+}
+
+* {
+    box-sizing : border-box;
+}
+
 body {
-    font-family : 'Roboto', sans-serif;
+    margin      : 0;
+    font-family : 'Inter', system-ui, sans-serif;
+    color       : var(--text);
+    /* fallback when WebGL is unavailable — canvas paints over it otherwise */
+    background  : var(--bg)
+                  radial-gradient(60rem 40rem at 20% 10%, rgba(80, 50, 160, 0.35), transparent 70%)
+                  no-repeat fixed;
 }
 
-.bg-flex-fill {
-    background-position     : center center;
-    background-repeat       : no-repeat;
-    -webkit-background-size : cover;
-    -moz-background-size    : cover;
-    -o-background-size      : cover;
-    background-size         : cover;
+#bg {
+    position : fixed;
+    inset    : 0;
+    width    : 100%;
+    height   : 100%;
+    z-index  : -1;
 }
 
-.card-overlay {
-    position         : absolute;
-    top              : 0;
-    left             : 0;
-    width            : 100%;
-    height           : 100%;
-    background-color : rgba(0, 0, 0, 0.5);
-    z-index          : 2;
-    pointer-events   : none;
+h1, h2, h3 {
+    font-family : 'Space Grotesk', 'Inter', sans-serif;
+    margin      : 0;
+}
+
+a {
+    color : var(--accent);
+}
+
+::selection {
+    background : var(--accent-soft);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    text-align : center;
+    padding    : clamp(4rem, 12vh, 7rem) 1.25rem 3.5rem;
+}
+
+.hero-kicker {
+    margin         : 0 0 0.75rem;
+    font-size      : 0.8rem;
+    font-weight    : 600;
+    letter-spacing : 0.35em;
+    text-transform : uppercase;
+    color          : var(--accent);
+}
+
+.hero h1 {
+    font-size   : clamp(2.2rem, 7vw, 3.8rem);
+    font-weight : 700;
+}
+
+.hero-tagline {
+    margin    : 1rem auto 1.75rem;
+    max-width : 34rem;
+    color     : var(--text-dim);
+    font-size : 1.05rem;
+}
+
+.hero-links {
+    display         : flex;
+    justify-content : center;
+    gap             : 0.75rem;
+}
+
+.hero-links .icon-btn {
+    width     : 2.75rem;
+    height    : 2.75rem;
+    font-size : 1.15rem;
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+    max-width : 1120px;
+    margin    : 0 auto;
+    padding   : 1.5rem 1.25rem;
+}
+
+.section h2 {
+    font-size : 1.5rem;
+    margin    : 0 0 0.35rem;
+}
+
+.section-note {
+    margin    : 0 0 1.25rem;
+    color     : var(--text-dim);
+    font-size : 0.9rem;
+}
+
+.grid {
+    display               : grid;
+    grid-template-columns : repeat(auto-fill, minmax(270px, 1fr));
+    gap                   : 1.25rem;
+    margin-top            : 1.25rem;
+}
+
+/* ---------- Glass card ---------- */
+
+.card {
+    position               : relative;
+    display                : flex;
+    flex-direction         : column;
+    border-radius          : 24px;
+    overflow               : hidden;
+    background             : var(--glass);
+    backdrop-filter        : blur(24px) saturate(160%);
+    -webkit-backdrop-filter : blur(24px) saturate(160%);
+    border                 : 1px solid var(--glass-border);
+    box-shadow             : 0 8px 32px rgba(0, 0, 0, 0.35);
+    transform              : perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition             : transform 0.18s ease;
+}
+
+/* bright top-left rim, iOS-glass style */
+.card::before {
+    content        : '';
+    position       : absolute;
+    inset          : 0;
+    border-radius  : inherit;
+    padding        : 1px;
+    background     : linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 40%);
+    -webkit-mask   : linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite : xor;
+    mask           : linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite : exclude;
+    pointer-events : none;
+    z-index        : 2;
+}
+
+/* specular highlight following the cursor */
+.card::after {
+    content        : '';
+    position       : absolute;
+    inset          : 0;
+    background     : radial-gradient(20rem circle at var(--mx, 50%) var(--my, 50%),
+                     rgba(255, 255, 255, 0.13), transparent 60%);
+    opacity        : 0;
+    transition     : opacity 0.25s ease;
+    pointer-events : none;
+    z-index        : 1;
+}
+
+@media (hover : hover) and (pointer : fine) {
+    .card:hover::after {
+        opacity : 1;
+    }
+}
+
+.card-img {
+    width        : 100%;
+    aspect-ratio : 16 / 9;
+    object-fit   : cover;
+    display      : block;
+}
+
+.card-img.pixelated {
+    image-rendering : pixelated;
+}
+
+.card-body {
+    padding : 1.1rem 1.25rem 1.25rem;
+    flex    : 1;
+}
+
+.card-title {
+    font-size : 1.2rem;
+    margin    : 0.5rem 0 0.35rem;
+}
+
+.card-text {
+    margin    : 0;
+    color     : var(--text-dim);
+    font-size : 0.92rem;
+}
+
+.card-footer {
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    gap             : 0.75rem;
+    padding         : 0.85rem 1.25rem;
+    border-top      : 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Tags ---------- */
+
+.tags {
+    display   : flex;
+    flex-wrap : wrap;
+    gap       : 0.35rem;
+}
+
+.tag {
+    font-size      : 0.68rem;
+    font-weight    : 600;
+    letter-spacing : 0.04em;
+    text-transform : uppercase;
+    padding        : 0.2rem 0.6rem;
+    border-radius  : 999px;
+    background     : var(--accent-soft);
+    border         : 1px solid rgba(139, 124, 248, 0.3);
+    color          : #b7aefb;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+    display     : inline-flex;
+    align-items : center;
+    gap         : 0.45rem;
+    font-size   : 0.82rem;
+    color       : var(--text-dim);
+    white-space : nowrap;
+}
+
+.status-dot {
+    width         : 0.5rem;
+    height        : 0.5rem;
+    border-radius : 50%;
+    flex-shrink   : 0;
+}
+
+.status-published {
+    background : #4ade80;
+}
+
+.status-ongoing {
+    background : #fbbf24;
+    animation  : pulse 2s ease-in-out infinite;
+}
+
+.status-archived {
+    background : #6b7280;
+}
+
+@keyframes pulse {
+    50% {
+        opacity : 0.4;
+    }
+}
+
+/* ---------- Link buttons ---------- */
+
+.card-links {
+    display : flex;
+    gap     : 0.4rem;
+}
+
+.icon-btn {
+    display         : inline-flex;
+    align-items     : center;
+    justify-content : center;
+    gap             : 0.4rem;
+    width           : 2.2rem;
+    height          : 2.2rem;
+    border-radius   : 999px;
+    background      : rgba(255, 255, 255, 0.08);
+    border          : 1px solid rgba(255, 255, 255, 0.12);
+    color           : var(--text);
+    text-decoration : none;
+    font-size       : 0.95rem;
+    transition      : background 0.15s ease, transform 0.15s ease;
+}
+
+.icon-btn:hover {
+    background : rgba(255, 255, 255, 0.16);
+    transform  : translateY(-1px);
+}
+
+.icon-btn.pill-btn {
+    width       : auto;
+    padding     : 0 0.9rem;
+    font-size   : 0.85rem;
+    font-weight : 500;
+}
+
+.icon-btn.is-disabled {
+    opacity : 0.35;
+    cursor  : not-allowed;
+}
+
+.icon-btn.is-disabled:hover {
+    background : rgba(255, 255, 255, 0.08);
+    transform  : none;
+}
+
+/* ---------- Archive ---------- */
+
+.archive .card-img {
+    filter : grayscale(0.45);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    text-align : center;
+    padding    : 3.5rem 1.25rem 2.5rem;
+    color      : var(--text-dim);
+}
+
+footer a {
+    color : var(--text-dim);
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion : reduce) {
+    .card {
+        transform  : none;
+        transition : none;
+    }
+
+    .status-ongoing {
+        animation : none;
+    }
 }
