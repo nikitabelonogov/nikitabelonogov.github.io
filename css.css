@@ -144,25 +144,6 @@ a {
     z-index        : 2;
 }
 
-/* specular highlight following the cursor */
-.card::after {
-    content        : '';
-    position       : absolute;
-    inset          : 0;
-    background     : radial-gradient(20rem circle at var(--mx, 50%) var(--my, 50%),
-                     rgba(255, 255, 255, 0.13), transparent 60%);
-    opacity        : 0;
-    transition     : opacity 0.25s ease;
-    pointer-events : none;
-    z-index        : 1;
-}
-
-@media (hover : hover) and (pointer : fine) {
-    .card:hover::after {
-        opacity : 1;
-    }
-}
-
 .card-img {
     width        : 100%;
     aspect-ratio : 16 / 9;

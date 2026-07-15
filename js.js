@@ -262,7 +262,7 @@ const projects = [
 ];
 
 // ==========================================================================
-// Vue app — glass cards with cursor-following specular highlight and tilt
+// Vue app — glass cards with cursor tilt
 // ==========================================================================
 
 const {createApp, defineComponent} = Vue;
@@ -290,8 +290,6 @@ const Card = defineComponent({
       const rect = el.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;
-      el.style.setProperty('--mx', `${x * 100}%`);
-      el.style.setProperty('--my', `${y * 100}%`);
       el.style.setProperty('--rx', `${(0.5 - y) * 6}deg`);
       el.style.setProperty('--ry', `${(x - 0.5) * 6}deg`);
     },
