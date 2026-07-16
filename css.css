@@ -1,5 +1,5 @@
 :root {
-    --bg           : #0b0d16;
+    --bg           : #000;
     --text         : #e8eaf2;
     --text-dim     : #9aa0b4;
     --glass        : rgba(255, 255, 255, 0.07);
@@ -19,9 +19,7 @@ body {
     font-family : 'Inter', system-ui, sans-serif;
     color       : var(--text);
     /* fallback when WebGL is unavailable — canvas paints over it otherwise */
-    background  : var(--bg)
-                  radial-gradient(60rem 40rem at 20% 10%, rgba(80, 50, 160, 0.35), transparent 70%)
-                  no-repeat fixed;
+    background  : var(--bg);
 }
 
 #bg {

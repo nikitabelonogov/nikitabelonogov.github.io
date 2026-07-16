@@ -1,64 +1,81 @@
 // ==========================================================================
-// Shader background — animated aurora on a fullscreen WebGL quad.
-// Falls back to the CSS gradient painted on <body> when WebGL is missing.
+// Shader background — drifting topographic contours on a fullscreen triangle.
+// All parameters are baked into the GLSL as constants so the compiler can
+// fold them; per frame only u_time is uploaded. Falls back to the CSS
+// background painted on <body> when WebGL is missing.
 // ==========================================================================
 
 (function initBackground() {
   const canvas = document.getElementById('bg');
-  const gl = canvas.getContext('webgl', {antialias: false, alpha: false});
+  const gl = canvas.getContext('webgl', {antialias: false, alpha: false, depth: false, stencil: false});
   if (!gl) return;
 
   const VERT = `
     attribute vec2 p;
-    void main() { gl_Position = vec4(p, 0.0, 1.0); }
+    varying vec2 v_c;
+    void main() {
+      v_c = p * 0.5; // centered uv (uv - 0.5); exact — linear across the triangle
+      gl_Position = vec4(p, 0.0, 1.0);
+    }
   `;
 
   const FRAG = `
     precision highp float;
-    uniform vec2 u_res;
-    uniform float u_time;
+    varying vec2 v_c;
+    uniform float u_time;  // pre-scaled by animation speed on the CPU
+    uniform vec2 u_scale;  // (aspect, 1) * zoom — changes only on resize
 
-    float hash(vec2 p) {
-      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+    // ---- perlin-style gradient noise ----
+    vec2 grad(vec2 p) {
+      p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+      return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
     }
 
-    float noise(vec2 p) {
+    float pnoise(vec2 p) {
       vec2 i = floor(p), f = fract(p);
-      vec2 u = f * f * (3.0 - 2.0 * f);
-      return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
-                 mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);
+      vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+      return mix(
+        mix(dot(grad(i), f),
+            dot(grad(i + vec2(1.0, 0.0)), f - vec2(1.0, 0.0)), u.x),
+        mix(dot(grad(i + vec2(0.0, 1.0)), f - vec2(0.0, 1.0)),
+            dot(grad(i + vec2(1.0, 1.0)), f - vec2(1.0, 1.0)), u.x),
+        u.y);
     }
 
-    float fbm(vec2 p) {
-      float v = 0.0, a = 0.5;
-      for (int i = 0; i < 5; i++) {
-        v += a * noise(p);
-        p = p * 2.03 + vec2(7.3, 3.1);
-        a *= 0.5;
-      }
-      return v;
+    // four noise octaves, each drifting its own way (velocity = direction * rate)
+    float height(vec2 p) {
+      return pnoise(p * 0.9 + vec2( 0.0765,  0.0644) * u_time) * 0.55
+           + pnoise(p * 2.1 + vec2(-0.1554,  0.0383) * u_time) * 0.28
+           + pnoise(p * 4.3 + vec2(-0.0799, -0.2474) * u_time) * 0.13
+           + pnoise(p * 8.9 + vec2( 0.3719, -0.1951) * u_time) * 0.024;
+    }
+
+    // top-down topographic contours, like a paper map (20 levels, index every 5th)
+    float scene(vec2 p) {
+      float x = height(p) * 20.0;
+      float f = fract(x);
+      float dist = min(f, 1.0 - f);          // distance to nearest contour level
+      bool major = mod(floor(x + 0.5), 5.0) < 0.5;
+      float w = major ? 0.0605 : 0.0275;     // height-band width: fat on flats, thin on slopes
+      float line = 1.0 - smoothstep(w, w * 1.75, dist);
+      return major ? line : line * 0.4;
     }
 
     void main() {
-      vec2 uv = gl_FragCoord.xy / u_res;
-      vec2 p = uv * vec2(u_res.x / u_res.y, 1.0) * 1.6;
-      float t = u_time * 0.04;
+      vec2 q = v_c * u_scale;
+      float g = scene(q);
 
-      float n1 = fbm(p + vec2(t * 0.8, -t * 0.6));
-      float n2 = fbm(p * 1.7 + vec2(-t * 0.5, t * 0.7) + n1 * 1.5);
+      // chromatic aberration, strongest at the left/right sides;
+      // k is exactly 0 in the center strip — coherent branch skips 2 of 3 taps
+      float k = smoothstep(0.08, 0.55, abs(v_c.x)) * 0.01;
+      vec3 col;
+      if (k > 0.0) {
+        col = vec3(scene(q * (1.0 - k)), g, scene(q * (1.0 + k)));
+      } else {
+        col = vec3(g);
+      }
 
-      vec3 base   = vec3(0.043, 0.051, 0.086);
-      vec3 purple = vec3(0.26, 0.16, 0.55);
-      vec3 teal   = vec3(0.05, 0.35, 0.45);
-      vec3 pink   = vec3(0.75, 0.25, 0.45);
-
-      vec3 col = base;
-      col = mix(col, purple, smoothstep(0.35, 0.85, n1) * 0.8);
-      col = mix(col, teal, smoothstep(0.4, 0.9, n2) * 0.7);
-      col += pink * pow(smoothstep(0.55, 1.0, n1 * n2 * 2.0), 2.0) * 0.25;
-
-      col *= 1.0 - distance(uv, vec2(0.5, 0.42)) * 0.55;
-
+      col *= 1.0 - dot(v_c, v_c); // vignette
       gl_FragColor = vec4(col, 1.0);
     }
   `;
@@ -77,35 +94,39 @@
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return;
   gl.useProgram(program);
 
+  // fullscreen triangle — no double-shaded diagonal seam
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
   const loc = gl.getAttribLocation(program, 'p');
   gl.enableVertexAttribArray(loc);
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
-  const uRes = gl.getUniformLocation(program, 'u_res');
   const uTime = gl.getUniformLocation(program, 'u_time');
+  const uScale = gl.getUniformLocation(program, 'u_scale');
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const start = performance.now();
   let raf = null;
+  let lastDraw = 0;
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(innerWidth * dpr);
     canvas.height = Math.round(innerHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uScale, (canvas.width / canvas.height) * 3.0, 3.0);
   }
 
-  function frame() {
-    gl.uniform2f(uRes, canvas.width, canvas.height);
-    gl.uniform1f(uTime, (performance.now() - start) / 1000);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  function frame(now) {
+    gl.uniform1f(uTime, (now - start) * 0.00025); // seconds * speed 0.25
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
 
-  function loop() {
-    frame();
+  function loop(now) {
     raf = requestAnimationFrame(loop);
+    if (now - lastDraw < 30) return; // ~30fps is plenty for this drift speed
+    lastDraw = now;
+    frame(now);
   }
 
   function play() {
@@ -123,13 +144,13 @@
 
   addEventListener('resize', () => {
     resize();
-    frame();
+    frame(performance.now());
   });
   document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
   reduceMotion.addEventListener('change', () => (reduceMotion.matches ? stop() : play()));
 
   resize();
-  frame(); // static frame even with reduced motion
+  frame(performance.now()); // static frame even with reduced motion
   play();
 })();
 
