@@ -7,7 +7,45 @@
     --glass-border : rgba(255, 255, 255, 0.14);
     --accent       : #8b7cf8;
     --accent-soft  : rgba(139, 124, 248, 0.16);
+    --card-shadow  : 0 8px 32px rgba(0, 0, 0, 0.35);
+    --rim          : rgba(255, 255, 255, 0.35);
+    --divider      : rgba(255, 255, 255, 0.08);
+    --btn-bg       : rgba(255, 255, 255, 0.08);
+    --btn-bg-hover : rgba(255, 255, 255, 0.16);
+    --btn-border   : rgba(255, 255, 255, 0.12);
+    --tag-border   : rgba(139, 124, 248, 0.3);
+    --tag-text     : #b7aefb;
     color-scheme   : dark;
+}
+
+/* light — warm paper to match the shader's topo-map palette */
+:root[data-theme="light"] {
+    --bg           : #ece8dc;
+    --text         : #24262d;
+    --text-dim     : #5f6372;
+    --glass        : rgba(255, 255, 255, 0.4);
+    --glass-strong : rgba(255, 255, 255, 0.6);
+    --glass-border : rgba(45, 45, 70, 0.14);
+    --accent       : #5b48d8;
+    --accent-soft  : rgba(91, 72, 216, 0.14);
+    --card-shadow  : 0 8px 32px rgba(70, 60, 40, 0.16);
+    --rim          : rgba(255, 255, 255, 0.9);
+    --divider      : rgba(45, 45, 70, 0.1);
+    --btn-bg       : rgba(45, 45, 70, 0.06);
+    --btn-bg-hover : rgba(45, 45, 70, 0.12);
+    --btn-border   : rgba(45, 45, 70, 0.14);
+    --tag-border   : rgba(91, 72, 216, 0.35);
+    --tag-text     : #4a38c2;
+    color-scheme   : light;
+}
+
+/* while switching, every color eases in step with the shader crossfade;
+   transform is deliberately absent so the card tilt is unaffected */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before {
+    transition : background-color 0.9s ease, background 0.9s ease, color 0.9s ease,
+                 border-color 0.9s ease, box-shadow 0.9s ease !important;
 }
 
 * {
@@ -121,7 +159,7 @@ a {
     backdrop-filter        : blur(24px) saturate(160%);
     -webkit-backdrop-filter : blur(24px) saturate(160%);
     border                 : 1px solid var(--glass-border);
-    box-shadow             : 0 8px 32px rgba(0, 0, 0, 0.35);
+    box-shadow             : var(--card-shadow);
     transform              : perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transition             : transform 0.18s ease;
 }
@@ -133,7 +171,7 @@ a {
     inset          : 0;
     border-radius  : inherit;
     padding        : 1px;
-    background     : linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 40%);
+    background     : linear-gradient(135deg, var(--rim), transparent 40%);
     -webkit-mask   : linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite : xor;
     mask           : linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -175,7 +213,7 @@ a {
     align-items     : center;
     gap             : 0.75rem;
     padding         : 0.85rem 1.25rem;
-    border-top      : 1px solid rgba(255, 255, 255, 0.08);
+    border-top      : 1px solid var(--divider);
 }
 
 /* ---------- Tags ---------- */
@@ -194,8 +232,8 @@ a {
     padding        : 0.2rem 0.6rem;
     border-radius  : 999px;
     background     : var(--accent-soft);
-    border         : 1px solid rgba(139, 124, 248, 0.3);
-    color          : #b7aefb;
+    border         : 1px solid var(--tag-border);
+    color          : var(--tag-text);
 }
 
 /* ---------- Status ---------- */
@@ -250,8 +288,8 @@ a {
     width           : 2.2rem;
     height          : 2.2rem;
     border-radius   : 999px;
-    background      : rgba(255, 255, 255, 0.08);
-    border          : 1px solid rgba(255, 255, 255, 0.12);
+    background      : var(--btn-bg);
+    border          : 1px solid var(--btn-border);
     color           : var(--text);
     text-decoration : none;
     font-size       : 0.95rem;
@@ -259,7 +297,7 @@ a {
 }
 
 .icon-btn:hover {
-    background : rgba(255, 255, 255, 0.16);
+    background : var(--btn-bg-hover);
     transform  : translateY(-1px);
 }
 
@@ -276,8 +314,24 @@ a {
 }
 
 .icon-btn.is-disabled:hover {
-    background : rgba(255, 255, 255, 0.08);
+    background : var(--btn-bg);
     transform  : none;
+}
+
+/* ---------- Theme toggle ---------- */
+
+.theme-toggle {
+    position                : fixed;
+    top                     : 1rem;
+    right                   : 1rem;
+    z-index                 : 10;
+    width                   : 2.75rem;
+    height                  : 2.75rem;
+    padding                 : 0;
+    font-size               : 1.05rem;
+    cursor                  : pointer;
+    backdrop-filter         : blur(12px);
+    -webkit-backdrop-filter : blur(12px);
 }
 
 /* ---------- Archive ---------- */

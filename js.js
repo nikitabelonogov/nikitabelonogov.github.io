@@ -1,9 +1,15 @@
 // ==========================================================================
 // Shader background — drifting topographic contours on a fullscreen triangle.
+// The pattern pans with page scroll so it reads as attached to the content.
 // All parameters are baked into the GLSL as constants so the compiler can
-// fold them; per frame only u_time is uploaded. Falls back to the CSS
-// background painted on <body> when WebGL is missing.
+// fold them; per frame only u_time, the scroll offset and u_theme are
+// uploaded. u_theme crossfades the palette between dark (glowing contours
+// on black) and light (ink contours on paper); the theme controller below
+// drives it through setShaderTheme.
+// Falls back to the CSS background painted on <body> when WebGL is missing.
 // ==========================================================================
+
+let setShaderTheme = () => {}; // no-op until the shader boots (or if WebGL is missing)
 
 (function initBackground() {
   const canvas = document.getElementById('bg');
@@ -24,6 +30,8 @@
     varying vec2 v_c;
     uniform float u_time;  // pre-scaled by animation speed on the CPU
     uniform vec2 u_scale;  // (aspect, 1) * zoom — changes only on resize
+    uniform float u_off;   // world-space pan from page scroll
+    uniform float u_theme; // 0 = dark, 1 = light; eased on the CPU during a switch
 
     // ---- perlin-style gradient noise ----
     vec2 grad(vec2 p) {
@@ -52,7 +60,7 @@
 
     // top-down topographic contours, like a paper map (20 levels, index every 5th)
     float scene(vec2 p) {
-      float x = height(p) * 20.0;
+      float x = height(p + vec2(0.0, u_off)) * 20.0;
       float f = fract(x);
       float dist = min(f, 1.0 - f);          // distance to nearest contour level
       bool major = mod(floor(x + 0.5), 5.0) < 0.5;
@@ -75,8 +83,13 @@
         col = vec3(g);
       }
 
-      col *= 1.0 - dot(v_c, v_c); // vignette
-      gl_FragColor = vec4(col, 1.0);
+      float vig = dot(v_c, v_c);
+      vec3 dark = col * (1.0 - vig); // glowing contours on black, vignetted
+      // light: dark ink lines on warm paper — the CA channels become subtle
+      // colored fringing on the ink; paper only takes a gentle edge shade
+      vec3 light = mix(vec3(0.93, 0.91, 0.86), vec3(0.24, 0.25, 0.28), col);
+      light *= 1.0 - vig * 0.3;
+      gl_FragColor = vec4(mix(dark, light, u_theme), 1.0);
     }
   `;
 
@@ -103,11 +116,22 @@
 
   const uTime = gl.getUniformLocation(program, 'u_time');
   const uScale = gl.getUniformLocation(program, 'u_scale');
+  const uOff = gl.getUniformLocation(program, 'u_off');
+  const uTheme = gl.getUniformLocation(program, 'u_theme');
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const start = performance.now();
   let raf = null;
   let lastDraw = 0;
+  let lastScroll = -1;
+  let unitsPerPx = 0; // world units per CSS pixel — pattern pans 1:1 with content
+
+  // theme tween — initial value comes from data-theme set before first paint
+  const THEME_FADE_MS = 900;
+  let themeCur = document.documentElement.dataset.theme === 'light' ? 1 : 0;
+  let themeTgt = themeCur;
+  let themeFrom = themeCur;
+  let themeStart = 0;
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -115,17 +139,27 @@
     canvas.height = Math.round(innerHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.uniform2f(uScale, (canvas.width / canvas.height) * 3.0, 3.0);
+    unitsPerPx = 3.0 / innerHeight;
   }
 
   function frame(now) {
-    gl.uniform1f(uTime, (now - start) * 0.00025); // seconds * speed 0.25
+    if (themeCur !== themeTgt) {
+      const k = Math.min((now - themeStart) / THEME_FADE_MS, 1);
+      themeCur = k === 1 ? themeTgt : themeFrom + (themeTgt - themeFrom) * k * k * (3 - 2 * k);
+    }
+    gl.uniform1f(uTheme, themeCur);
+    // freeze drift for reduced motion — scroll pan still tracks user input
+    gl.uniform1f(uTime, reduceMotion.matches ? 0 : (now - start) * 0.00025); // seconds * speed 0.25
+    gl.uniform1f(uOff, -window.scrollY * unitsPerPx);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
 
   function loop(now) {
     raf = requestAnimationFrame(loop);
-    if (now - lastDraw < 30) return; // ~30fps is plenty for this drift speed
+    const scroll = window.scrollY;
+    if (now - lastDraw < 30 && scroll === lastScroll) return; // idle drift needs only ~30fps; scroll redraws every tick
     lastDraw = now;
+    lastScroll = scroll;
     frame(now);
   }
 
@@ -146,12 +180,81 @@
     resize();
     frame(performance.now());
   });
+  addEventListener('scroll', () => {
+    if (raf === null) frame(performance.now()); // loop paused (reduced motion) — still pan with scroll
+  }, {passive: true});
   document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
   reduceMotion.addEventListener('change', () => (reduceMotion.matches ? stop() : play()));
+
+  setShaderTheme = (light, animate) => {
+    themeTgt = light ? 1 : 0;
+    if (!animate || reduceMotion.matches) {
+      themeCur = themeTgt; // reduced motion: snap, no crossfade
+    } else {
+      themeFrom = themeCur;
+      themeStart = performance.now();
+    }
+    if (raf === null) frame(performance.now()); // repaint even while the loop is paused
+  };
 
   resize();
   frame(performance.now()); // static frame even with reduced motion
   play();
+})();
+
+// ==========================================================================
+// Theme — corner button cycles system → light → dark, persisted in
+// localStorage. Applies data-theme for CSS, retints the browser chrome via
+// <meta theme-color>, and crossfades the shader palette. A temporary
+// .theme-fade class on <html> makes the CSS colors ease in step with it.
+// ==========================================================================
+
+(function initTheme() {
+  const ORDER = ['system', 'light', 'dark'];
+  const ICONS = {
+    system: 'fa-solid fa-circle-half-stroke',
+    light: 'fa-solid fa-sun',
+    dark: 'fa-solid fa-moon',
+  };
+  const btn = document.getElementById('theme-toggle');
+  const icon = btn.querySelector('i');
+  const metaColor = document.querySelector('meta[name="theme-color"]');
+  const sysDark = matchMedia('(prefers-color-scheme: dark)');
+  let fadeTimer = 0;
+
+  let setting = localStorage.getItem('theme');
+  if (!ORDER.includes(setting)) setting = 'system';
+
+  function apply(animate) {
+    const theme = setting === 'system' ? (sysDark.matches ? 'dark' : 'light') : setting;
+    const root = document.documentElement;
+    if (animate) {
+      root.classList.add('theme-fade');
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(() => root.classList.remove('theme-fade'), 1000);
+    }
+    root.dataset.theme = theme;
+    metaColor.content = theme === 'dark' ? '#000000' : '#ece8dc';
+    icon.className = ICONS[setting];
+    btn.setAttribute('aria-label', `Theme: ${setting}. Switch to ${ORDER[(ORDER.indexOf(setting) + 1) % ORDER.length]}`);
+    btn.title = `Theme: ${setting}`;
+    setShaderTheme(theme === 'light', animate);
+  }
+
+  btn.addEventListener('click', () => {
+    setting = ORDER[(ORDER.indexOf(setting) + 1) % ORDER.length];
+    try {
+      localStorage.setItem('theme', setting);
+    } catch (e) { /* private mode — theme still applies for this visit */ }
+    apply(true);
+  });
+
+  // OS theme flips fade too when following the system
+  sysDark.addEventListener('change', () => {
+    if (setting === 'system') apply(true);
+  });
+
+  apply(false);
 })();
 
 // ==========================================================================

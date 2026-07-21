@@ -7,6 +7,14 @@
     <title>Nikita Belonogov — gamedev, plugins & bots</title>
     <meta name="description" content="Personal site of Nikita Belonogov: games, Jenkins plugins and Telegram bots.">
     <meta name="theme-color" content="#000000">
+    <script>
+        // resolve the saved/system theme before first paint to avoid a flash
+        try {
+            var t = localStorage.getItem('theme');
+            if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
     <meta property="og:title" content="Nikita Belonogov — gamedev, plugins & bots">
     <meta property="og:description" content="Games, Jenkins plugins and Telegram bots.">
     <meta property="og:type" content="website">
@@ -27,6 +35,10 @@
 <body>
 
 <canvas id="bg" aria-hidden="true"></canvas>
+
+<button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Switch theme">
+    <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+</button>
 
 <header class="hero">
     <p class="hero-kicker">Hi!</p>
